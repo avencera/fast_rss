@@ -1,10 +1,11 @@
 use rss::Channel;
-use rustler::{Encoder, Env, Error, Term};
+use rustler::{Encoder, Env, Error as RustlerError, Term};
 use serde_json::json;
 
 mod atoms {
     rustler::rustler_atoms! {
         atom ok;
+        atom error;
     }
 }
 
@@ -16,12 +17,22 @@ rustler::rustler_export_nifs! {
     None
 }
 
-fn parse<'a>(env: Env<'a>, args: &[Term<'a>]) -> Result<Term<'a>, Error> {
+fn parse<'a>(env: Env<'a>, args: &[Term<'a>]) -> Result<Term<'a>, RustlerError> {
     let rss_string: &str = args[0].decode()?;
 
-    let rss_parsed = Channel::read_from(rss_string.as_bytes()).unwrap();
+    let json = parse_and_encode(rss_string);
 
-    let json = json!(rss_parsed);
+    match json {
+        Ok(json) => Ok((atoms::ok(), json).encode(env)),
+        Err(err) => Ok((
+            atoms::error(),
+            format!("Unable to parse RSS (debug: {:?})", err),
+        )
+            .encode(env)),
+    }
+}
 
-    Ok((atoms::ok(), json.to_string()).encode(env))
+fn parse_and_encode(rss_string: &str) -> Result<String, rss::Error> {
+    let rss_parsed = Channel::read_from(rss_string.as_bytes())?;
+    Ok(json!(rss_parsed).to_string())
 }

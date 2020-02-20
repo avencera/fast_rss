@@ -24,3 +24,5 @@ fast_rss-*.tar
 
 
 .elixir_ls
+
+priv/native/libfastrss.so
