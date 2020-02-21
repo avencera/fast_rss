@@ -6,10 +6,21 @@ defmodule FastRss.MixProject do
       app: :fast_rss,
       version: "0.1.0",
       elixir: "~> 1.10",
+      # hex
+      description: "Fast RSS parser written in rust",
+      package: package(),
       start_permanent: Mix.env() == :prod,
       compilers: [:rustler] ++ Mix.compilers(),
       rustler_crates: [fastrss: []],
       deps: deps()
+    ]
+  end
+
+  defp package() do
+    [
+      maintainers: ["Praveen Perera"],
+      licenses: ["Apache-2.0"],
+      links: %{"GitHub" => "https://github.com/avencera/fast_rss"}
     ]
   end
 
@@ -25,7 +36,10 @@ defmodule FastRss.MixProject do
       {:rustler, "~> 0.21.0"},
 
       # json
-      {:jason, "~> 1.1"}
+      {:jason, "~> 1.1"},
+
+      # docs
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 end
