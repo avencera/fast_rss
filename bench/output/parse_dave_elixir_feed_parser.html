@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Benchee Report</title>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/benchee.css">
+    <link rel="stylesheet" type="text/css" href="assets/fontello/css/fontello.css">
+  
+</head>
+
+  <body>
+
+    <div class="header">
+  <h1>benchee report</h1>
+  
+  <span class="input-label">
+    dave
+  </span>
+
+
+  <span class="version-note">
+  <a href="javascript:toggleSystemDataInfo();" title="Click to toggle system info">System info</a>
+</span>
+
+</div>
+
+
+    <article id="system-info" class="benchee-systeminfo" >
+  <h3>System info</h3>
+  <ul class="benchee-systeminfo-list">
+    <li>Elixir: 1.10.1</li>
+    <li>Erlang: 22.2.6</li>
+    <li>Operating system: macOS</li>
+    <li>Available memory: 32 GB</li>
+    <li>CPU Information: Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz</li>
+    <li>Number of Available Cores: 16</li>
+  </ul>
+</article>
+
+
+    
+      <article>
+        <h2>
+          <a name="run_time" href="#run_time">elixir_feed_parser Run Time</a>
+          <a href="https://github.com/PragTob/benchee_html/wiki/Chart-Types#individual">
+            <i
+              class="benchee-help-icon icon-question-circle-o"
+              title="Graphs showing the individual run time distribution for elixir_feed_parser.
+  Run Times Histogram shows the distribution of occurrences of specific run times in buckets.
+  Raw Run Times shows all individual recorded run times in the order they were recorded in."
+            ></i>
+          </a>
+        </h2>
+
+        <section>
+          <table>
+  <thead>
+    <tr>
+      <th class="text-left">Name</th>
+      
+        <th>Iterations per Second</th>
+      
+      <th>Average</th>
+      <th>Deviation</th>
+      <th>Median</th>
+      <th>Mode</th>
+      <th>Minimum</th>
+      <th>Maximum</th>
+      <th>Sample size</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      <tr>
+        
+          <td class="text-left">elixir_feed_parser</td>
+        
+        
+          <td>7.59</td>
+          <td>131.76 ms</td>
+          <td>±4.83%</td>
+          <td>131.74 ms</td>
+          <td>none</td>
+          <td>68.34 ms</td>
+          <td>152.47 ms</td>
+        
+        <td>228</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+        </section>
+
+        <section class="benchee-plot-container">
+          <div id="run-times-histogram" class="plot"></div>
+        </section>
+        <section class="benchee-plot-container">
+          <div id="raw-run-times" class="plot"></div>
+        </section>
+      </article>
+    
+
+    
+      <article>
+        <h2>
+          <a name="memory" href="#memory">elixir_feed_parser Memory</a>
+          <a href="https://github.com/PragTob/benchee_html/wiki/Chart-Types#individual">
+            <i
+              class="benchee-help-icon icon-question-circle-o"
+              title="Graphs showing the individual memory usage distribution for elixir_feed_parser.
+  Run Times Histogram shows the distribution of occurrences of specific run times in buckets.
+  Raw Run Times shows all individual recorded run times in the order they were recorded in."
+            ></i>
+          </a>
+        </h2>
+
+        <section>
+          <table>
+  <thead>
+    <tr>
+      <th class="text-left">Name</th>
+      
+      <th>Average</th>
+      <th>Deviation</th>
+      <th>Median</th>
+      <th>Mode</th>
+      <th>Minimum</th>
+      <th>Maximum</th>
+      <th>Sample size</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      <tr>
+        
+          <td class="text-left">elixir_feed_parser</td>
+        
+        
+          <td>80.42 MB</td>
+          <td>±0.00%</td>
+          <td>80.42 MB</td>
+          <td>80.42 MB</td>
+          <td>80.42 MB</td>
+          <td>80.42 MB</td>
+        
+        <td>22</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+        </section>
+
+        
+      </article>
+    
+
+    <footer>
+      <a href="https://github.com/PragTob/benchee" target="blank">benchee version: 1.0.1 </a>
+<br/>
+<a href="https://github.com/PragTob/benchee_html" target="blank">benchee_html version: 1.0.0</a>
+
+
+    </footer>
+
+    
+  <script src="assets/javascripts/plotly-1.30.1.min.js"></script>
+  <script src="assets/javascripts/benchee.js"></script>
+
+
+
+    <script>
+      var scenario = {"name":"elixir_feed_parser","job_name":"elixir_feed_parser","input_name":"dave","run_time_data":{"statistics":{"absolute_difference":125074902.90217067,"average":131763063.11403508,"ips":7.589380334415453,"maximum":152469002.0,"median":131739502.0,"minimum":6.8342e7,"mode":null,"percentiles":{"50":131739502.0,"99":142357182.0},"relative_less":0.05075899158534362,"relative_more":19.70094300078145,"sample_size":228,"std_dev":6361418.731582673,"std_dev_ips":0.3664094100383209,"std_dev_ratio":0.048279226220455634},"samples":[6.8342e7,135783002.0,137683002.0,134193002.0,133169001.0,130409002.0,130131002.0,138454002.0,128362001.0,132744002.0,133527002.0,130488001.0,124761002.0,122690002.0,136286001.0,131950002.0,131457002.0,142032002.0,137513002.0,129042001.0,119421002.0,124656001.0,135559002.0,126723002.0,123196001.0,135340002.0,139273002.0,131281002.0,135258001.0,130711002.0,129922002.0,124685001.0,127373002.0,135460002.0,126917001.0,123685002.0,129499002.0,133658002.0,137322001.0,122715002.0,128289002.0,135108001.0,124781002.0,127050002.0,127107001.0,134258002.0,128376002.0,121096001.0,137608002.0,136539002.0,133554002.0,120965001.0,134364002.0,131499002.0,131358001.0,130719002.0,133883002.0,131245001.0,128604002.0,128557002.0,134700002.0,137422001.0,137197002.0,134240002.0,137986002.0,134951001.0,132861002.0,126291002.0,130963001.0,133964002.0,124306002.0,139266002.0,128292001.0,130661002.0,133187002.0,133828001.0,138029002.0,129985002.0,133008002.0,136712001.0,123506002.0,134508002.0,133135002.0,138941001.0,125897002.0,121213002.0,131319001.0,129185002.0,133962002.0,134515001.0,130051002.0,132187002.0,136585002.0,135819001.0,136036002.0,136947002.0,125644002.0,131431001.0,139387002.0,129230002.0,129818001.0,132866002.0,138851002.0,127182002.0,125957001.0,125350002.0,137096002.0,137074001.0,126555002.0,137193002.0,135420002.0,129290001.0,129746002.0,136523002.0,138127002.0,131064001.0,135641002.0,136143002.0,131767002.0,131148001.0,127092002.0,141056002.0,137332002.0,133754001.0,138066002.0,131008002.0,131147001.0,125269002.0,138604002.0,130075002.0,137065001.0,135814002.0,135181002.0,134872002.0,133355001.0,140222002.0,130944002.0,130346002.0,131826001.0,132570002.0,136738002.0,133227002.0,132532001.0,138578002.0,131768002.0,133111002.0,135760001.0,136798002.0,126352002.0,130992001.0,128365002.0,135486002.0,128274001.0,124518002.0,138155002.0,135250002.0,132844001.0,129151002.0,140783002.0,131127002.0,129430001.0,137480002.0,133557002.0,126006001.0,128177002.0,129541002.0,138378002.0,128616001.0,135186002.0,129586002.0,132868001.0,128353002.0,123244002.0,130925001.0,138187002.0,133556002.0,135574002.0,141523002.0,134416001.0,132798002.0,132741002.0,128530001.0,126024002.0,130494002.0,131708001.0,134453002.0,127365002.0,132169002.0,129664001.0,138281002.0,134716002.0,131100002.0,138871001.0,132735002.0,131240002.0,122844001.0,136940002.0,129014002.0,130605002.0,135999001.0,129442002.0,126895002.0,130877001.0,124063002.0,131712002.0,124845001.0,131193002.0,129803002.0,130371001.0,130486002.0,152469002.0,142490002.0,130718002.0,135191001.0,131473002.0,134553002.0,129113001.0,130019002.0,130112002.0,129096002.0,127703001.0,130443002.0,132913002.0,130811001.0,126246002.0,133348002.0,125494001.0,135010002.0]},"memory_usage_data":{"statistics":{"absolute_difference":83933520.0,"average":84328544.0,"ips":null,"maximum":84328544,"median":84328544.0,"minimum":84328544,"mode":84328544,"percentiles":{"50":84328544.0,"99":84328544.0},"relative_less":0.00468434507774734,"relative_more":213.47701405484224,"sample_size":22,"std_dev":0.0,"std_dev_ips":null,"std_dev_ratio":0.0},"samples":[84328544,84328544,84328544,84328544,84328544,84328544,84328544,84328544,84328544,84328544,84328544,84328544,84328544,84328544,84328544,84328544,84328544,84328544,84328544,84328544,84328544,84328544]},"tag":null};
+
+      var inputHeadline = " (dave)"
+
+      
+        drawRunTimeHistogram(scenario, inputHeadline);
+        drawRawRunTimeChart(scenario, inputHeadline);
+      
+
+      
+        if (scenario.memory_usage_data.statistics.std_dev !== 0) {
+          drawMemoryHistogram(scenario, inputHeadline);
+          drawRawMemoryChart(scenario, inputHeadline);
+        };
+      
+    </script>
+  </body>
+</html>

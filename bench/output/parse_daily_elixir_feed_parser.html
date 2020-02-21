@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Benchee Report</title>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/benchee.css">
+    <link rel="stylesheet" type="text/css" href="assets/fontello/css/fontello.css">
+  
+</head>
+
+  <body>
+
+    <div class="header">
+  <h1>benchee report</h1>
+  
+  <span class="input-label">
+    daily
+  </span>
+
+
+  <span class="version-note">
+  <a href="javascript:toggleSystemDataInfo();" title="Click to toggle system info">System info</a>
+</span>
+
+</div>
+
+
+    <article id="system-info" class="benchee-systeminfo" >
+  <h3>System info</h3>
+  <ul class="benchee-systeminfo-list">
+    <li>Elixir: 1.10.1</li>
+    <li>Erlang: 22.2.6</li>
+    <li>Operating system: macOS</li>
+    <li>Available memory: 32 GB</li>
+    <li>CPU Information: Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz</li>
+    <li>Number of Available Cores: 16</li>
+  </ul>
+</article>
+
+
+    
+      <article>
+        <h2>
+          <a name="run_time" href="#run_time">elixir_feed_parser Run Time</a>
+          <a href="https://github.com/PragTob/benchee_html/wiki/Chart-Types#individual">
+            <i
+              class="benchee-help-icon icon-question-circle-o"
+              title="Graphs showing the individual run time distribution for elixir_feed_parser.
+  Run Times Histogram shows the distribution of occurrences of specific run times in buckets.
+  Raw Run Times shows all individual recorded run times in the order they were recorded in."
+            ></i>
+          </a>
+        </h2>
+
+        <section>
+          <table>
+  <thead>
+    <tr>
+      <th class="text-left">Name</th>
+      
+        <th>Iterations per Second</th>
+      
+      <th>Average</th>
+      <th>Deviation</th>
+      <th>Median</th>
+      <th>Mode</th>
+      <th>Minimum</th>
+      <th>Maximum</th>
+      <th>Sample size</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      <tr>
+        
+          <td class="text-left">elixir_feed_parser</td>
+        
+        
+          <td>0.59</td>
+          <td>1.69 s</td>
+          <td>±0.88%</td>
+          <td>1.68 s</td>
+          <td>none</td>
+          <td>1.66 s</td>
+          <td>1.72 s</td>
+        
+        <td>18</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+        </section>
+
+        <section class="benchee-plot-container">
+          <div id="run-times-histogram" class="plot"></div>
+        </section>
+        <section class="benchee-plot-container">
+          <div id="raw-run-times" class="plot"></div>
+        </section>
+      </article>
+    
+
+    
+      <article>
+        <h2>
+          <a name="memory" href="#memory">elixir_feed_parser Memory</a>
+          <a href="https://github.com/PragTob/benchee_html/wiki/Chart-Types#individual">
+            <i
+              class="benchee-help-icon icon-question-circle-o"
+              title="Graphs showing the individual memory usage distribution for elixir_feed_parser.
+  Run Times Histogram shows the distribution of occurrences of specific run times in buckets.
+  Raw Run Times shows all individual recorded run times in the order they were recorded in."
+            ></i>
+          </a>
+        </h2>
+
+        <section>
+          <table>
+  <thead>
+    <tr>
+      <th class="text-left">Name</th>
+      
+      <th>Average</th>
+      <th>Deviation</th>
+      <th>Median</th>
+      <th>Mode</th>
+      <th>Minimum</th>
+      <th>Maximum</th>
+      <th>Sample size</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      <tr>
+        
+          <td class="text-left">elixir_feed_parser</td>
+        
+        
+          <td>880.51 MB</td>
+          <td>±0.00%</td>
+          <td>880.51 MB</td>
+          <td>none</td>
+          <td>880.51 MB</td>
+          <td>880.51 MB</td>
+        
+        <td>1</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+        </section>
+
+        
+      </article>
+    
+
+    <footer>
+      <a href="https://github.com/PragTob/benchee" target="blank">benchee version: 1.0.1 </a>
+<br/>
+<a href="https://github.com/PragTob/benchee_html" target="blank">benchee_html version: 1.0.0</a>
+
+
+    </footer>
+
+    
+  <script src="assets/javascripts/plotly-1.30.1.min.js"></script>
+  <script src="assets/javascripts/benchee.js"></script>
+
+
+
+    <script>
+      var scenario = {"name":"elixir_feed_parser","job_name":"elixir_feed_parser","input_name":"daily","run_time_data":{"statistics":{"absolute_difference":1609637105.2599108,"average":1685096402.7222223,"ips":0.5934378581454035,"maximum":1718034022.0,"median":1683172022.0,"minimum":1655879021.0,"mode":null,"percentiles":{"50":1683172022.0,"99":1718034022.0},"relative_less":0.04478040386319105,"relative_more":22.33119654425421,"sample_size":18,"std_dev":14872311.879707702,"std_dev_ips":0.00523755963949978,"std_dev_ratio":0.008825792907564179},"samples":[1.6966e9,1.679699e9,1.696636e9,1.686415e9,1.669808e9,1.697152e9,1689222008.0,1670367022.0,1675084022.0,1655879021.0,1672199022.0,1704689022.0,1684864022.0,1681386022.0,1718034022.0,1696899022.0,1675322022.0,1681480022.0]},"memory_usage_data":{"statistics":{"absolute_difference":919818176.0,"average":923279752.0,"ips":null,"maximum":923279752,"median":923279752.0,"minimum":923279752,"mode":null,"percentiles":{"50":923279752.0,"99":923279752.0},"relative_less":0.0037492168462500844,"relative_more":266.7223692329737,"sample_size":1,"std_dev":0,"std_dev_ips":null,"std_dev_ratio":0.0},"samples":[923279752]},"tag":null};
+
+      var inputHeadline = " (daily)"
+
+      
+        drawRunTimeHistogram(scenario, inputHeadline);
+        drawRawRunTimeChart(scenario, inputHeadline);
+      
+
+      
+        if (scenario.memory_usage_data.statistics.std_dev !== 0) {
+          drawMemoryHistogram(scenario, inputHeadline);
+          drawRawMemoryChart(scenario, inputHeadline);
+        };
+      
+    </script>
+  </body>
+</html>
