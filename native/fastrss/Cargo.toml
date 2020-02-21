@@ -12,6 +12,6 @@ crate-type = ["dylib"]
 [dependencies]
 rustler = "0.21.0"
 lazy_static = "1.4"
-rss = {version = "1.9", features = ["serde"]}
+rss = {version = "1.9", features = ["serde"], default-features = false}
 serde = "1.0.104"
 serde_json = "1.0.48"

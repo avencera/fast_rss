@@ -1,4 +1,4 @@
-use rss::Channel;
+use rss;
 use rustler::{Encoder, Env, Error as RustlerError, Term};
 use serde_json::json;
 
@@ -33,6 +33,6 @@ fn parse<'a>(env: Env<'a>, args: &[Term<'a>]) -> Result<Term<'a>, RustlerError> 
 }
 
 fn parse_and_encode(rss_string: &str) -> Result<String, rss::Error> {
-    let rss_parsed = Channel::read_from(rss_string.as_bytes())?;
+    let rss_parsed = rss::Channel::read_from(rss_string.as_bytes())?;
     Ok(json!(rss_parsed).to_string())
 }
