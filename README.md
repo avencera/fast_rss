@@ -33,6 +33,8 @@ The docs can be found at [https://hexdocs.pm/fast_rss](https://hexdocs.pm/fast_r
 
 ## Benchmark
 
+HTML: https://avencera.github.io/fast_rss/
+
 Benchmark run from 2020-02-21 18:07:35.376657Z UTC
 
 ### System
