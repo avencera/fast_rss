@@ -6,6 +6,8 @@ defmodule FastRss.MixProject do
       app: :fast_rss,
       version: "0.1.2",
       elixir: "~> 1.10",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
       # hex
       description: "Fast RSS parser written in rust",
       package: package(),
@@ -18,6 +20,7 @@ defmodule FastRss.MixProject do
 
   defp package() do
     [
+      files: ["lib", "native", "mix.exs", "README.md"],
       maintainers: ["Praveen Perera"],
       licenses: ["Apache-2.0"],
       links: %{"GitHub" => "https://github.com/avencera/fast_rss"}
