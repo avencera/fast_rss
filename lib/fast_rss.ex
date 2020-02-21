@@ -4,7 +4,7 @@ defmodule FastRSS do
   """
 
   defmodule Native do
-    @doc false
+    @moduledoc false
     use Rustler, otp_app: :fast_rss, crate: "fastrss"
 
     # When your NIF is loaded, it will override this function.
