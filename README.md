@@ -14,6 +14,15 @@ def deps do
 end
 ```
 
+## Usage
+
+There is only one function it takes an RSS string and outputs an `{:ok, map()}`
+
+```elixir
+iex(1)> FastRSS.parse("...rss_feed_string...")
+iex(2)> {:ok, map_of_rss}
+```
+
 The docs can be found at [https://hexdocs.pm/fast_rss](https://hexdocs.pm/fast_rss).
 
 ## Benchmarks
