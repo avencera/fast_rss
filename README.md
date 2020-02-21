@@ -9,7 +9,7 @@ The package can be installed by adding `fast_rss` to your list of dependencies i
 ```elixir
 def deps do
   [
-    {:fast_rss, "~> 0.1.0"}
+    {:fast_rss, "~> 0.1.4"}
   ]
 end
 ```
@@ -33,7 +33,7 @@ The docs can be found at [https://hexdocs.pm/fast_rss](https://hexdocs.pm/fast_r
 
 ## Benchmarks
 
-HTML:  https://avencera.github.io/fast_rss/
+HTML: https://avencera.github.io/fast_rss/
 
 ```
 Operating System: macOS
@@ -67,7 +67,7 @@ Name                         ips        average  deviation         median       
 fast_rss                   74.81       13.37 ms     ±6.36%       13.18 ms       16.72 ms
 elixir_feed_parser          1.75      570.95 ms     ±3.04%      570.26 ms      627.29 ms
 
-Comparison: 
+Comparison:
 fast_rss                   74.81
 elixir_feed_parser          1.75 - 42.71x slower +557.59 ms
 
@@ -84,7 +84,7 @@ Name                         ips        average  deviation         median       
 fast_rss                   49.37       20.26 ms     ±5.46%       20.03 ms       24.54 ms
 elixir_feed_parser          2.95      339.25 ms     ±4.65%      336.32 ms      411.44 ms
 
-Comparison: 
+Comparison:
 fast_rss                   49.37
 elixir_feed_parser          2.95 - 16.75x slower +319.00 ms
 
@@ -101,7 +101,7 @@ Name                         ips        average  deviation         median       
 fast_rss                   13.25       0.0755 s     ±5.98%       0.0741 s       0.0898 s
 elixir_feed_parser          0.59         1.69 s     ±0.88%         1.68 s         1.72 s
 
-Comparison: 
+Comparison:
 fast_rss                   13.25
 elixir_feed_parser          0.59 - 22.33x slower +1.61 s
 
@@ -118,7 +118,7 @@ Name                         ips        average  deviation         median       
 fast_rss                  149.52        6.69 ms     ±5.80%        6.60 ms        8.40 ms
 elixir_feed_parser          7.59      131.76 ms     ±4.83%      131.74 ms      142.36 ms
 
-Comparison: 
+Comparison:
 fast_rss                  149.52
 elixir_feed_parser          7.59 - 19.70x slower +125.07 ms
 
