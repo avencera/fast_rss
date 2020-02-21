@@ -14,6 +14,12 @@ def deps do
 end
 ```
 
+You also need rust installed: https://www.rust-lang.org/tools/install
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
 ## Usage
 
 There is only one function it takes an RSS string and outputs an `{:ok, map()}`
