@@ -21,6 +21,8 @@ be found at [https://hexdocs.pm/fast_rss](https://hexdocs.pm/fast_rss).
 
 ## Benchmarks
 
+HTML:  https://avencera.github.io/fast_rss/
+
 ```
 Operating System: macOS
 CPU Information: Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz
