@@ -14,7 +14,7 @@ def deps do
 end
 ```
 
-You also need rust installed: https://www.rust-lang.org/tools/install
+You also need the rust compiler installed: https://www.rust-lang.org/tools/install
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
