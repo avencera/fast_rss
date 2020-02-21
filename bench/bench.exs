@@ -15,7 +15,9 @@ end
 
 parse_jobs = %{
   "fast_rss" => &FastRSS.parse/1,
-  "elixir_feed_parser" => fn string -> elixir_feed_parser.(string) end
+  "elixir_feed_parser" => fn string -> elixir_feed_parser.(string) end,
+  "feed_raptor" => &Feedraptor.parse/1,
+  "feeder_ex" => &FeederEx.parse/1
 }
 
 parse_inputs = [
@@ -47,6 +49,7 @@ Benchee.run(parse_jobs,
     end,
   formatters: [
     {Benchee.Formatters.HTML, file: Path.expand("output/parse.html", __DIR__)},
+    {Benchee.Formatters.Markdown, file: Path.expand("output/parse.md", __DIR__)},
     Benchee.Formatters.Console
   ]
 )

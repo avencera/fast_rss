@@ -20,10 +20,16 @@ defmodule Benchmarks.MixProject do
 
   defp deps do
     [
-      {:fast_rss, "~> 0.1.0", path: "../", override: true},
+      # benchee
       {:benchee, "~> 1.0"},
       {:benchee_html, "~> 1.0"},
-      {:elixir_feed_parser, "~> 0.0.1"}
+      {:benchee_markdown, "~> 0.1"},
+
+      # libs to compare
+      {:fast_rss, "~> 0.1.0", path: "../", override: true},
+      {:feedraptor, "~> 0.3.0"},
+      {:elixir_feed_parser, "~> 0.0.1"},
+      {:feeder_ex, "~> 1.1"}
     ]
   end
 end
