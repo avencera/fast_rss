@@ -4,12 +4,12 @@ defmodule FastRss.MixProject do
   def project do
     [
       app: :fast_rss,
-      version: "0.1.4",
-      elixir: "~> 1.5",
+      version: "0.1.5",
+      elixir: "~> 1.8",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       # hex
-      description: "Fast RSS parser written in rust",
+      description: "Fast Elixir RSS feed parser, a NIF wrapper around the Rust RSS crate",
       package: package(),
       start_permanent: Mix.env() == :prod,
       compilers: [:rustler] ++ Mix.compilers(),

@@ -4,7 +4,9 @@ Parse RSS feeds very quickly
 
 ## Installation
 
-The package can be installed by adding `fast_rss` to your list of dependencies in `mix.exs`:
+This package is available on [hex](https://hex.pm/packages/fast_rss).
+
+It can be installed by adding `fast_rss` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
