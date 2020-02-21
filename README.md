@@ -7,12 +7,13 @@ Parse RSS feeds very quickly
 
 **Speed**
 
-Currently this is already much faster than most of the pure elixir/erlang packages out there. In benchmarks there is speed improvements anyway between **2.85x - 22.05x** over the next fastest package [feeder_ex](https://github.com/manukall/feeder_ex). 
+Currently this is already much faster than most of the pure elixir/erlang packages out there. In benchmarks there are speed improvements anywhere between **2.85x - 22.05x** over the next fastest package [feeder_ex](https://github.com/manukall/feeder_ex) that was tested.
 
-Compared to the slowest elixir options ([feed_raptor](https://github.com/merongivian/feedraptor), [elixir_feed_parser](https://github.com/fdietz/elixir-feed-parser)), FastRSS was sometimes **127.21x** faster and used **2091.61x** less memory. See [benchmarks](#benchmark) below.
+Compared to the slowest elixir options tested ([feed_raptor](https://github.com/merongivian/feedraptor), [elixir_feed_parser](https://github.com/fdietz/elixir-feed-parser)), FastRSS was sometimes **127.21x** faster and used **2091.61x** less memory.
 
+See [benchmarks](#benchmark) below for more.
 
-This could probably be made even faster by properly using [serde_rustler](https://github.com/sunny-g/serde_rustler) to directly convert the [`rss:Channel`](https://docs.rs/rss/1.9.0/rss/struct.Channel.html) into an elixir map (PRs welcome)
+With all that being said, this package could probably be made even faster by properly using [serde_rustler](https://github.com/sunny-g/serde_rustler) to directly convert the [`rss:Channel`](https://docs.rs/rss/1.9.0/rss/struct.Channel.html) into an elixir map (PRs welcome)
 
 Currently we do this very naively, the process is:
   1. On the rust side we serialize the [`rss:Channel`](https://docs.rs/rss/1.9.0/rss/struct.Channel.html) it into a JSON string using [`serde_json`](https://docs.serde.rs/serde_json/)
