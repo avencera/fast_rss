@@ -22,7 +22,9 @@ parse_inputs = [
   "anxiety",
   "ben",
   "daily",
-  "dave"
+  "dave",
+  "stuff",
+  "sleepy"
 ]
 
 read_data = fn name ->
