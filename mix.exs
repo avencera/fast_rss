@@ -4,7 +4,7 @@ defmodule FastRss.MixProject do
   def project do
     [
       app: :fast_rss,
-      version: "0.1.1",
+      version: "0.1.2",
       elixir: "~> 1.10",
       # hex
       description: "Fast RSS parser written in rust",
