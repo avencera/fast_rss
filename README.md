@@ -2,14 +2,14 @@
 
 Parse RSS feeds very quickly
 
-* This is rust NIF built using [rustler](https://github.com/rusterlium/rustler)
-* Uses the [RSS](https://crates.io/crates/rss) crate to do the actual RSS parsing
+- This is rust NIF built using [rustler](https://github.com/rusterlium/rustler)
+- Uses the [RSS](https://crates.io/crates/rss) crate to do the actual RSS parsing
 
 **Speed**
 
-Currently this is already much faster than most of the pure elixir/erlang packages out there. In benchmarks there are speed improvements anywhere between **5.94x - 49.03x** over the next fastest package ([feeder_ex](https://github.com/manukall/feeder_ex)) that was tested.
+Currently this is already much faster than most of the pure elixir/erlang packages out there. In benchmarks there are speed improvements anywhere between **6.12x - 50.09x** over the next fastest package ([feeder_ex](https://github.com/manukall/feeder_ex)) that was tested.
 
-Compared to the slowest elixir options tested ([feed_raptor](https://github.com/merongivian/feedraptor), [elixir_feed_parser](https://github.com/fdietz/elixir-feed-parser)), FastRSS was sometimes **255.53x** faster and used **5,412,308.17x** less memory *(0.00156 MB	vs 8423.70 MB)*.
+Compared to the slowest elixir options tested ([feed_raptor](https://github.com/merongivian/feedraptor), [elixir_feed_parser](https://github.com/fdietz/elixir-feed-parser)), FastRSS was sometimes **259.91x** faster and used **5,412,308.17x** less memory _(0.00156 MB vs 8423.70 MB)_.
 
 ## Installation
 
@@ -96,10 +96,10 @@ Benchmark suite executing with the following configuration:
 
 ### Statistics
 
-
-__Input: anxiety__
+**Input: anxiety**
 
 Run Time
+
 <table style="width: 1%">
   <tr>
     <th>Name</th>
@@ -199,9 +199,10 @@ Memory Usage
 </table>
 <hr/>
 
-__Input: ben__
+**Input: ben**
 
 Run Time
+
 <table style="width: 1%">
   <tr>
     <th>Name</th>
@@ -301,9 +302,10 @@ Memory Usage
 </table>
 <hr/>
 
-__Input: daily__
+**Input: daily**
 
 Run Time
+
 <table style="width: 1%">
   <tr>
     <th>Name</th>
@@ -403,9 +405,10 @@ Memory Usage
 </table>
 <hr/>
 
-__Input: dave__
+**Input: dave**
 
 Run Time
+
 <table style="width: 1%">
   <tr>
     <th>Name</th>
@@ -505,9 +508,10 @@ Memory Usage
 </table>
 <hr/>
 
-__Input: sleepy__
+**Input: sleepy**
 
 Run Time
+
 <table style="width: 1%">
   <tr>
     <th>Name</th>
@@ -607,9 +611,10 @@ Memory Usage
 </table>
 <hr/>
 
-__Input: stuff__
+**Input: stuff**
 
 Run Time
+
 <table style="width: 1%">
   <tr>
     <th>Name</th>
