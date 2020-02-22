@@ -18,10 +18,11 @@ defmodule FastRSS do
   def parse(""), do: {:error, "Cannot parse blank string"}
 
   def parse(rss_string) when is_binary(rss_string) do
-    with {:ok, json} <- Native.parse(rss_string) do
-      Jason.decode(json, keys: :atoms)
+    case Native.parse(rss_string) do
+      %{"Ok" => map} -> {:ok, map}
+      %{"Err" => msg} -> {:error, msg}
     end
   end
 
-  def parse(_somethig_else), do: {:error, "Invalid RSS format"}
+  def parse(_somethig_else), do: {:error, "RSS feed must be passed in as a string"}
 end

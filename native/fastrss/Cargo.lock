@@ -54,13 +54,15 @@ dependencies = [
 
 [[package]]
 name = "fastrss"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "lazy_static",
  "rss",
  "rustler",
  "serde",
+ "serde-transcode",
  "serde_json",
+ "serde_rustler",
 ]
 
 [[package]]
@@ -113,6 +115,12 @@ checksum = "3acb317c6ff86a4e579dfa00fc5e6cca91ecbb4e7eb2df0468805b674eb88548"
 dependencies = [
  "unicode-xid 0.2.0",
 ]
+
+[[package]]
+name = "quick-error"
+version = "1.2.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a1d01941d82fa2ab50be1e79e6714289dd7cde78eba4c074bc5a4374f650dfe0"
 
 [[package]]
 name = "quick-xml"
@@ -207,6 +215,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "serde-transcode"
+version = "1.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "97528f0dfcf8ce2d51d995cb513a103b9cd301dc3f387a9cae5ef974381d4e1c"
+dependencies = [
+ "serde",
+]
+
+[[package]]
 name = "serde_derive"
 version = "1.0.104"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -225,6 +242,18 @@ checksum = "9371ade75d4c2d6cb154141b9752cf3781ec9c05e0e5cf35060e1e70ee7b9c25"
 dependencies = [
  "itoa",
  "ryu",
+ "serde",
+]
+
+[[package]]
+name = "serde_rustler"
+version = "0.0.3"
+source = "git+https://github.com/sunny-g/serde_rustler#1401ac3f055916517bedd5939a83826e73c713a5"
+dependencies = [
+ "lazy_static",
+ "quick-error",
+ "rustler",
+ "rustler_codegen",
  "serde",
 ]
 
