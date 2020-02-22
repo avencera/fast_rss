@@ -7,7 +7,7 @@ Parse RSS feeds very quickly
 
 **Speed**
 
-Currently this is already much faster than most of the pure elixir/erlang packages out there. In benchmarks there are speed improvements anywhere between **5.94x - 49.03x** over the next fastest package [feeder_ex](https://github.com/manukall/feeder_ex) that was tested.
+Currently this is already much faster than most of the pure elixir/erlang packages out there. In benchmarks there are speed improvements anywhere between **5.94x - 49.03x** over the next fastest package ([feeder_ex])(https://github.com/manukall/feeder_ex) that was tested.
 
 Compared to the slowest elixir options tested ([feed_raptor](https://github.com/merongivian/feedraptor), [elixir_feed_parser](https://github.com/fdietz/elixir-feed-parser)), FastRSS was sometimes **255.53x** faster and used **5,412,308.17x** less memory *(0.00156 MB	vs 8423.70 MB)*.
 
