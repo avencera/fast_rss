@@ -27,4 +27,5 @@ fast_rss-*.tar
 priv/native/libfastrss.so
 native/fastrss/target
 
-bench/output
+bench/output/assets
+bench/output/*.html
