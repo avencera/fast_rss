@@ -21,5 +21,5 @@ defmodule FastRSS do
     Native.parse(rss_string)
   end
 
-  def parse(_somethig_else), do: {:error, "Invalid RSS format"}
+  def parse(_somethig_else), do: {:error, "RSS feed must be passed in as a string"}
 end
