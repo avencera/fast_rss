@@ -1,5 +1,5 @@
 use rss;
-use rustler::{Encoder, Env, Error, Term};
+use rustler::{Env, NifResult, Term};
 use serde_json;
 use serde_json::json;
 
@@ -21,11 +21,11 @@ rustler::rustler_export_nifs! {
     None
 }
 
-fn parse<'a>(env: Env<'a>, args: &[Term<'a>]) -> Result<Term<'a>, Error> {
+fn parse<'a>(env: Env<'a>, args: &[Term<'a>]) -> NifResult<Term<'a>> {
     let rss_string: &str = serde_rustler::from_term(args[0])?;
 
     let channel = rss::Channel::read_from(rss_string.as_bytes())
-        .map_err(|err| format!("Unable to parse RSS  - ({:?})", err));
+        .map_err(|err| format!("Unable to parse RSS - ({:?})", err));
 
     let ser = serde_rustler::Serializer::from(env);
     let de = json!(channel);
@@ -33,7 +33,7 @@ fn parse<'a>(env: Env<'a>, args: &[Term<'a>]) -> Result<Term<'a>, Error> {
         serde_transcode::transcode(de, ser).map_err(|_err| "Unable to encode to erlang terms");
 
     match encoded {
-        Ok(term) => Ok((atoms::ok(), term).encode(env)),
-        Err(error_message) => Ok((atoms::error(), error_message).encode(env)),
+        Ok(term) => Ok(term),
+        Err(error_message) => Err(rustler::error::Error::Atom(error_message)),
     }
 }
