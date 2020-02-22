@@ -7,17 +7,9 @@ Parse RSS feeds very quickly
 
 **Speed**
 
-Currently this is already much faster than most of the pure elixir/erlang packages out there. In benchmarks there are speed improvements anywhere between **2.85x - 22.05x** over the next fastest package [feeder_ex](https://github.com/manukall/feeder_ex) that was tested.
+Currently this is already much faster than most of the pure elixir/erlang packages out there. In benchmarks there are speed improvements anywhere between **5.94x - 49.03x** over the next fastest package [feeder_ex](https://github.com/manukall/feeder_ex) that was tested.
 
-Compared to the slowest elixir options tested ([feed_raptor](https://github.com/merongivian/feedraptor), [elixir_feed_parser](https://github.com/fdietz/elixir-feed-parser)), FastRSS was sometimes **127.21x** faster and used **2091.61x** less memory.
-
-See [benchmarks](#benchmark) below for more.
-
-With all that being said, this package could probably be made even faster by properly using [serde_rustler](https://github.com/sunny-g/serde_rustler) to directly convert the [`rss:Channel`](https://docs.rs/rss/1.9.0/rss/struct.Channel.html) into an elixir map (PRs welcome)
-
-Currently we do this very naively, the process is:
-  1. On the rust side we serialize the [`rss:Channel`](https://docs.rs/rss/1.9.0/rss/struct.Channel.html) it into a JSON string using [`serde_json`](https://docs.serde.rs/serde_json/)
-  2. Then on the elixir side we deserialize the JSON string into a elixir map using [`Jason`](https://github.com/michalmuskala/jason)
+Compared to the slowest elixir options tested ([feed_raptor](https://github.com/merongivian/feedraptor), [elixir_feed_parser](https://github.com/fdietz/elixir-feed-parser)), FastRSS was sometimes **255.53x** faster and used **5,412,308.17x** less memory *(0.00156 MB	vs 8423.70 MB)*.
 
 ## Installation
 
@@ -28,7 +20,7 @@ It can be installed by adding `fast_rss` to your list of dependencies in `mix.ex
 ```elixir
 def deps do
   [
-    {:fast_rss, "~> 0.1.4"}
+    {:fast_rss, "~> 0.2.0"}
   ]
 end
 ```
@@ -41,20 +33,23 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 ## Usage
 
-There is only one function it takes an RSS string and outputs an `{:ok, map()}`
+There is only one function it takes an RSS string and outputs an `{:ok, map()}` with string keys.
 
 ```elixir
-iex(1)> FastRSS.parse("...rss_feed_string...")
-iex(2)> {:ok, map_of_rss}
+iex(1)>  {:ok, map_of_rss} = FastRSS.parse("...rss_feed_string...")
+iex(2)> Map.keys(map_of_rss)
+["categories", "cloud", "copyright", "description", "docs", "dublin_core_ext",
+ "extensions", "generator", "image", "items", "itunes_ext", "language",
+ "last_build_date", "link", "managing_editor", "namespaces", "pub_date",
+ "rating", "skip_days", "skip_hours", "syndication_ext", "text_input", "title",
+ "ttl", "webmaster"]
 ```
 
 The docs can be found at [https://hexdocs.pm/fast_rss](https://hexdocs.pm/fast_rss).
 
 ## Benchmark
 
-HTML: https://avencera.github.io/fast_rss/
-
-Benchmark run from 2020-02-21 18:07:35.376657Z UTC
+Benchmark run from 2020-02-22 05:23:47.524699Z UTC
 
 ### System
 
@@ -101,10 +96,10 @@ Benchmark suite executing with the following configuration:
 
 ### Statistics
 
-**Input: anxiety**
+
+__Input: anxiety__
 
 Run Time
-
 <table style="width: 1%">
   <tr>
     <th>Name</th>
@@ -116,35 +111,35 @@ Run Time
   </tr>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap; text-align: right">81.22</td>
-    <td style="white-space: nowrap; text-align: right">12.31 ms</td>
-    <td style="white-space: nowrap; text-align: right">±2.67%</td>
-    <td style="white-space: nowrap; text-align: right">12.27 ms</td>
-    <td style="white-space: nowrap; text-align: right">13.58 ms</td>
+    <td style="white-space: nowrap; text-align: right">187.87</td>
+    <td style="white-space: nowrap; text-align: right">5.32 ms</td>
+    <td style="white-space: nowrap; text-align: right">±7.77%</td>
+    <td style="white-space: nowrap; text-align: right">5.50 ms</td>
+    <td style="white-space: nowrap; text-align: right">6.07 ms</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
-    <td style="white-space: nowrap; text-align: right">3.68</td>
-    <td style="white-space: nowrap; text-align: right">271.51 ms</td>
-    <td style="white-space: nowrap; text-align: right">±5.44%</td>
-    <td style="white-space: nowrap; text-align: right">266.17 ms</td>
-    <td style="white-space: nowrap; text-align: right">313.98 ms</td>
+    <td style="white-space: nowrap; text-align: right">3.83</td>
+    <td style="white-space: nowrap; text-align: right">260.98 ms</td>
+    <td style="white-space: nowrap; text-align: right">±4.31%</td>
+    <td style="white-space: nowrap; text-align: right">257.94 ms</td>
+    <td style="white-space: nowrap; text-align: right">292.82 ms</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
-    <td style="white-space: nowrap; text-align: right">3.05</td>
-    <td style="white-space: nowrap; text-align: right">328.25 ms</td>
-    <td style="white-space: nowrap; text-align: right">±0.89%</td>
-    <td style="white-space: nowrap; text-align: right">328.01 ms</td>
-    <td style="white-space: nowrap; text-align: right">347.03 ms</td>
+    <td style="white-space: nowrap; text-align: right">3.01</td>
+    <td style="white-space: nowrap; text-align: right">331.82 ms</td>
+    <td style="white-space: nowrap; text-align: right">±1.68%</td>
+    <td style="white-space: nowrap; text-align: right">329.61 ms</td>
+    <td style="white-space: nowrap; text-align: right">354.81 ms</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
-    <td style="white-space: nowrap; text-align: right">1.97</td>
-    <td style="white-space: nowrap; text-align: right">506.87 ms</td>
-    <td style="white-space: nowrap; text-align: right">±2.33%</td>
-    <td style="white-space: nowrap; text-align: right">506.76 ms</td>
-    <td style="white-space: nowrap; text-align: right">524.07 ms</td>
+    <td style="white-space: nowrap; text-align: right">1.95</td>
+    <td style="white-space: nowrap; text-align: right">512.96 ms</td>
+    <td style="white-space: nowrap; text-align: right">±2.63%</td>
+    <td style="white-space: nowrap; text-align: right">511.14 ms</td>
+    <td style="white-space: nowrap; text-align: right">560.28 ms</td>
   </tr>
 </table>
 Comparison
@@ -155,23 +150,23 @@ Comparison
     <th style="text-align: right">Slower</th>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap;text-align: right">81.22</td>
+    <td style="white-space: nowrap;text-align: right">187.87</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
-    <td style="white-space: nowrap; text-align: right">3.68</td>
-    <td style="white-space: nowrap; text-align: right">22.05x</td>
+    <td style="white-space: nowrap; text-align: right">3.83</td>
+    <td style="white-space: nowrap; text-align: right">49.03x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
-    <td style="white-space: nowrap; text-align: right">3.05</td>
-    <td style="white-space: nowrap; text-align: right">26.66x</td>
+    <td style="white-space: nowrap; text-align: right">3.01</td>
+    <td style="white-space: nowrap; text-align: right">62.34x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
-    <td style="white-space: nowrap; text-align: right">1.97</td>
-    <td style="white-space: nowrap; text-align: right">41.17x</td>
+    <td style="white-space: nowrap; text-align: right">1.95</td>
+    <td style="white-space: nowrap; text-align: right">96.37x</td>
   </tr>
 </table>
 Memory Usage
@@ -183,31 +178,30 @@ Memory Usage
   </tr>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap">0.65 MB</td>
+    <td style="white-space: nowrap">0.00153 MB</td>
       <td>&nbsp;</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
     <td style="white-space: nowrap">17.21 MB</td>
-    <td>26.62x</td>
+    <td>11223.73x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
-    <td style="white-space: nowrap">268.54 MB</td>
-    <td>415.36x</td>
+    <td style="white-space: nowrap">268.63 MB</td>
+    <td>175173.81x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
     <td style="white-space: nowrap">313.30 MB</td>
-    <td>484.6x</td>
+    <td>204302.48x</td>
   </tr>
 </table>
 <hr/>
 
-**Input: ben**
+__Input: ben__
 
 Run Time
-
 <table style="width: 1%">
   <tr>
     <th>Name</th>
@@ -219,35 +213,35 @@ Run Time
   </tr>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap; text-align: right">52.83</td>
-    <td style="white-space: nowrap; text-align: right">18.93 ms</td>
-    <td style="white-space: nowrap; text-align: right">±2.43%</td>
-    <td style="white-space: nowrap; text-align: right">18.94 ms</td>
-    <td style="white-space: nowrap; text-align: right">19.68 ms</td>
+    <td style="white-space: nowrap; text-align: right">83.88</td>
+    <td style="white-space: nowrap; text-align: right">11.92 ms</td>
+    <td style="white-space: nowrap; text-align: right">±9.92%</td>
+    <td style="white-space: nowrap; text-align: right">12.32 ms</td>
+    <td style="white-space: nowrap; text-align: right">14.95 ms</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
-    <td style="white-space: nowrap; text-align: right">13.24</td>
-    <td style="white-space: nowrap; text-align: right">75.55 ms</td>
-    <td style="white-space: nowrap; text-align: right">±3.19%</td>
-    <td style="white-space: nowrap; text-align: right">75.19 ms</td>
-    <td style="white-space: nowrap; text-align: right">83.40 ms</td>
+    <td style="white-space: nowrap; text-align: right">13.33</td>
+    <td style="white-space: nowrap; text-align: right">75.04 ms</td>
+    <td style="white-space: nowrap; text-align: right">±3.23%</td>
+    <td style="white-space: nowrap; text-align: right">74.61 ms</td>
+    <td style="white-space: nowrap; text-align: right">80.51 ms</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
-    <td style="white-space: nowrap; text-align: right">3.61</td>
-    <td style="white-space: nowrap; text-align: right">276.65 ms</td>
-    <td style="white-space: nowrap; text-align: right">±3.84%</td>
-    <td style="white-space: nowrap; text-align: right">275.63 ms</td>
-    <td style="white-space: nowrap; text-align: right">322.99 ms</td>
+    <td style="white-space: nowrap; text-align: right">3.58</td>
+    <td style="white-space: nowrap; text-align: right">279.04 ms</td>
+    <td style="white-space: nowrap; text-align: right">±2.68%</td>
+    <td style="white-space: nowrap; text-align: right">279.29 ms</td>
+    <td style="white-space: nowrap; text-align: right">301.63 ms</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
     <td style="white-space: nowrap; text-align: right">0.48</td>
-    <td style="white-space: nowrap; text-align: right">2080.14 ms</td>
-    <td style="white-space: nowrap; text-align: right">±0.57%</td>
-    <td style="white-space: nowrap; text-align: right">2075.11 ms</td>
-    <td style="white-space: nowrap; text-align: right">2112.08 ms</td>
+    <td style="white-space: nowrap; text-align: right">2073.09 ms</td>
+    <td style="white-space: nowrap; text-align: right">±0.63%</td>
+    <td style="white-space: nowrap; text-align: right">2071.30 ms</td>
+    <td style="white-space: nowrap; text-align: right">2099.29 ms</td>
   </tr>
 </table>
 Comparison
@@ -258,23 +252,23 @@ Comparison
     <th style="text-align: right">Slower</th>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap;text-align: right">52.83</td>
+    <td style="white-space: nowrap;text-align: right">83.88</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
-    <td style="white-space: nowrap; text-align: right">13.24</td>
-    <td style="white-space: nowrap; text-align: right">3.99x</td>
+    <td style="white-space: nowrap; text-align: right">13.33</td>
+    <td style="white-space: nowrap; text-align: right">6.29x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
-    <td style="white-space: nowrap; text-align: right">3.61</td>
-    <td style="white-space: nowrap; text-align: right">14.62x</td>
+    <td style="white-space: nowrap; text-align: right">3.58</td>
+    <td style="white-space: nowrap; text-align: right">23.41x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
     <td style="white-space: nowrap; text-align: right">0.48</td>
-    <td style="white-space: nowrap; text-align: right">109.89x</td>
+    <td style="white-space: nowrap; text-align: right">173.9x</td>
   </tr>
 </table>
 Memory Usage
@@ -286,31 +280,30 @@ Memory Usage
   </tr>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap">1.35 MB</td>
+    <td style="white-space: nowrap">0.00153 MB</td>
       <td>&nbsp;</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
     <td style="white-space: nowrap">27.86 MB</td>
-    <td>20.7x</td>
+    <td>18169.98x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
     <td style="white-space: nowrap">163.88 MB</td>
-    <td>121.76x</td>
+    <td>106864.74x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
-    <td style="white-space: nowrap">1577.40 MB</td>
-    <td>1172.03x</td>
+    <td style="white-space: nowrap">1577.38 MB</td>
+    <td>1028611.82x</td>
   </tr>
 </table>
 <hr/>
 
-**Input: daily**
+__Input: daily__
 
 Run Time
-
 <table style="width: 1%">
   <tr>
     <th>Name</th>
@@ -322,35 +315,35 @@ Run Time
   </tr>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap; text-align: right">14.28</td>
-    <td style="white-space: nowrap; text-align: right">0.0700 s</td>
-    <td style="white-space: nowrap; text-align: right">±2.59%</td>
-    <td style="white-space: nowrap; text-align: right">0.0695 s</td>
-    <td style="white-space: nowrap; text-align: right">0.0776 s</td>
+    <td style="white-space: nowrap; text-align: right">32.52</td>
+    <td style="white-space: nowrap; text-align: right">0.0308 s</td>
+    <td style="white-space: nowrap; text-align: right">±8.07%</td>
+    <td style="white-space: nowrap; text-align: right">0.0317 s</td>
+    <td style="white-space: nowrap; text-align: right">0.0349 s</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
-    <td style="white-space: nowrap; text-align: right">5.02</td>
+    <td style="white-space: nowrap; text-align: right">5.03</td>
     <td style="white-space: nowrap; text-align: right">0.199 s</td>
-    <td style="white-space: nowrap; text-align: right">±1.52%</td>
+    <td style="white-space: nowrap; text-align: right">±1.38%</td>
     <td style="white-space: nowrap; text-align: right">0.198 s</td>
-    <td style="white-space: nowrap; text-align: right">0.21 s</td>
+    <td style="white-space: nowrap; text-align: right">0.22 s</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
-    <td style="white-space: nowrap; text-align: right">0.65</td>
-    <td style="white-space: nowrap; text-align: right">1.55 s</td>
-    <td style="white-space: nowrap; text-align: right">±1.25%</td>
-    <td style="white-space: nowrap; text-align: right">1.55 s</td>
-    <td style="white-space: nowrap; text-align: right">1.59 s</td>
+    <td style="white-space: nowrap; text-align: right">0.64</td>
+    <td style="white-space: nowrap; text-align: right">1.57 s</td>
+    <td style="white-space: nowrap; text-align: right">±1.03%</td>
+    <td style="white-space: nowrap; text-align: right">1.57 s</td>
+    <td style="white-space: nowrap; text-align: right">1.60 s</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
-    <td style="white-space: nowrap; text-align: right">0.126</td>
-    <td style="white-space: nowrap; text-align: right">7.91 s</td>
+    <td style="white-space: nowrap; text-align: right">0.127</td>
+    <td style="white-space: nowrap; text-align: right">7.86 s</td>
     <td style="white-space: nowrap; text-align: right">±0.28%</td>
-    <td style="white-space: nowrap; text-align: right">7.92 s</td>
-    <td style="white-space: nowrap; text-align: right">7.92 s</td>
+    <td style="white-space: nowrap; text-align: right">7.85 s</td>
+    <td style="white-space: nowrap; text-align: right">7.89 s</td>
   </tr>
 </table>
 Comparison
@@ -361,23 +354,23 @@ Comparison
     <th style="text-align: right">Slower</th>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap;text-align: right">14.28</td>
+    <td style="white-space: nowrap;text-align: right">32.52</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
-    <td style="white-space: nowrap; text-align: right">5.02</td>
-    <td style="white-space: nowrap; text-align: right">2.85x</td>
+    <td style="white-space: nowrap; text-align: right">5.03</td>
+    <td style="white-space: nowrap; text-align: right">6.47x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
-    <td style="white-space: nowrap; text-align: right">0.65</td>
-    <td style="white-space: nowrap; text-align: right">22.1x</td>
+    <td style="white-space: nowrap; text-align: right">0.64</td>
+    <td style="white-space: nowrap; text-align: right">51.0x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
-    <td style="white-space: nowrap; text-align: right">0.126</td>
-    <td style="white-space: nowrap; text-align: right">112.97x</td>
+    <td style="white-space: nowrap; text-align: right">0.127</td>
+    <td style="white-space: nowrap; text-align: right">255.53x</td>
   </tr>
 </table>
 Memory Usage
@@ -389,31 +382,30 @@ Memory Usage
   </tr>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap">3.30 MB</td>
+    <td style="white-space: nowrap">0.00154 MB</td>
       <td>&nbsp;</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
     <td style="white-space: nowrap">109.73 MB</td>
-    <td>33.24x</td>
+    <td>71201.54x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
     <td style="white-space: nowrap">880.51 MB</td>
-    <td>266.72x</td>
+    <td>571336.48x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
     <td style="white-space: nowrap">6386.15 MB</td>
-    <td>1934.48x</td>
+    <td>4143790.06x</td>
   </tr>
 </table>
 <hr/>
 
-**Input: dave**
+__Input: dave__
 
 Run Time
-
 <table style="width: 1%">
   <tr>
     <th>Name</th>
@@ -425,35 +417,35 @@ Run Time
   </tr>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap; text-align: right">155.84</td>
-    <td style="white-space: nowrap; text-align: right">6.42 ms</td>
-    <td style="white-space: nowrap; text-align: right">±2.37%</td>
-    <td style="white-space: nowrap; text-align: right">6.40 ms</td>
-    <td style="white-space: nowrap; text-align: right">6.98 ms</td>
+    <td style="white-space: nowrap; text-align: right">399.65</td>
+    <td style="white-space: nowrap; text-align: right">2.50 ms</td>
+    <td style="white-space: nowrap; text-align: right">±11.60%</td>
+    <td style="white-space: nowrap; text-align: right">2.48 ms</td>
+    <td style="white-space: nowrap; text-align: right">3.39 ms</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
-    <td style="white-space: nowrap; text-align: right">55.88</td>
-    <td style="white-space: nowrap; text-align: right">17.90 ms</td>
-    <td style="white-space: nowrap; text-align: right">±5.45%</td>
-    <td style="white-space: nowrap; text-align: right">17.50 ms</td>
-    <td style="white-space: nowrap; text-align: right">20.48 ms</td>
+    <td style="white-space: nowrap; text-align: right">57.18</td>
+    <td style="white-space: nowrap; text-align: right">17.49 ms</td>
+    <td style="white-space: nowrap; text-align: right">±2.15%</td>
+    <td style="white-space: nowrap; text-align: right">17.44 ms</td>
+    <td style="white-space: nowrap; text-align: right">18.48 ms</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
-    <td style="white-space: nowrap; text-align: right">9.10</td>
-    <td style="white-space: nowrap; text-align: right">109.93 ms</td>
-    <td style="white-space: nowrap; text-align: right">±3.71%</td>
-    <td style="white-space: nowrap; text-align: right">109.59 ms</td>
-    <td style="white-space: nowrap; text-align: right">123.09 ms</td>
+    <td style="white-space: nowrap; text-align: right">9.06</td>
+    <td style="white-space: nowrap; text-align: right">110.43 ms</td>
+    <td style="white-space: nowrap; text-align: right">±4.61%</td>
+    <td style="white-space: nowrap; text-align: right">109.65 ms</td>
+    <td style="white-space: nowrap; text-align: right">134.74 ms</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
-    <td style="white-space: nowrap; text-align: right">1.58</td>
-    <td style="white-space: nowrap; text-align: right">631.99 ms</td>
-    <td style="white-space: nowrap; text-align: right">±1.44%</td>
-    <td style="white-space: nowrap; text-align: right">632.06 ms</td>
-    <td style="white-space: nowrap; text-align: right">652.61 ms</td>
+    <td style="white-space: nowrap; text-align: right">1.57</td>
+    <td style="white-space: nowrap; text-align: right">636.73 ms</td>
+    <td style="white-space: nowrap; text-align: right">±1.49%</td>
+    <td style="white-space: nowrap; text-align: right">637.79 ms</td>
+    <td style="white-space: nowrap; text-align: right">664.67 ms</td>
   </tr>
 </table>
 Comparison
@@ -464,23 +456,23 @@ Comparison
     <th style="text-align: right">Slower</th>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap;text-align: right">155.84</td>
+    <td style="white-space: nowrap;text-align: right">399.65</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
-    <td style="white-space: nowrap; text-align: right">55.88</td>
-    <td style="white-space: nowrap; text-align: right">2.79x</td>
+    <td style="white-space: nowrap; text-align: right">57.18</td>
+    <td style="white-space: nowrap; text-align: right">6.99x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
-    <td style="white-space: nowrap; text-align: right">9.10</td>
-    <td style="white-space: nowrap; text-align: right">17.13x</td>
+    <td style="white-space: nowrap; text-align: right">9.06</td>
+    <td style="white-space: nowrap; text-align: right">44.13x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
-    <td style="white-space: nowrap; text-align: right">1.58</td>
-    <td style="white-space: nowrap; text-align: right">98.49x</td>
+    <td style="white-space: nowrap; text-align: right">1.57</td>
+    <td style="white-space: nowrap; text-align: right">254.47x</td>
   </tr>
 </table>
 Memory Usage
@@ -492,31 +484,30 @@ Memory Usage
   </tr>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap">0.38 MB</td>
+    <td style="white-space: nowrap">0.00155 MB</td>
       <td>&nbsp;</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
     <td style="white-space: nowrap">9.25 MB</td>
-    <td>24.56x</td>
+    <td>5973.16x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
     <td style="white-space: nowrap">80.42 MB</td>
-    <td>213.48x</td>
+    <td>51926.44x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
-    <td style="white-space: nowrap">571.18 MB</td>
-    <td>1516.17x</td>
+    <td style="white-space: nowrap">571.15 MB</td>
+    <td>368775.6x</td>
   </tr>
 </table>
 <hr/>
 
-**Input: sleepy**
+__Input: sleepy__
 
 Run Time
-
 <table style="width: 1%">
   <tr>
     <th>Name</th>
@@ -528,35 +519,35 @@ Run Time
   </tr>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap; text-align: right">368.53</td>
-    <td style="white-space: nowrap; text-align: right">2.71 ms</td>
-    <td style="white-space: nowrap; text-align: right">±2.71%</td>
-    <td style="white-space: nowrap; text-align: right">2.71 ms</td>
-    <td style="white-space: nowrap; text-align: right">2.90 ms</td>
+    <td style="white-space: nowrap; text-align: right">740.80</td>
+    <td style="white-space: nowrap; text-align: right">1.35 ms</td>
+    <td style="white-space: nowrap; text-align: right">±17.51%</td>
+    <td style="white-space: nowrap; text-align: right">1.27 ms</td>
+    <td style="white-space: nowrap; text-align: right">2.19 ms</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
-    <td style="white-space: nowrap; text-align: right">124.50</td>
-    <td style="white-space: nowrap; text-align: right">8.03 ms</td>
-    <td style="white-space: nowrap; text-align: right">±6.82%</td>
-    <td style="white-space: nowrap; text-align: right">7.95 ms</td>
-    <td style="white-space: nowrap; text-align: right">9.84 ms</td>
+    <td style="white-space: nowrap; text-align: right">124.75</td>
+    <td style="white-space: nowrap; text-align: right">8.02 ms</td>
+    <td style="white-space: nowrap; text-align: right">±4.67%</td>
+    <td style="white-space: nowrap; text-align: right">8.05 ms</td>
+    <td style="white-space: nowrap; text-align: right">8.68 ms</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
-    <td style="white-space: nowrap; text-align: right">26.79</td>
-    <td style="white-space: nowrap; text-align: right">37.33 ms</td>
-    <td style="white-space: nowrap; text-align: right">±3.84%</td>
-    <td style="white-space: nowrap; text-align: right">37.19 ms</td>
-    <td style="white-space: nowrap; text-align: right">41.86 ms</td>
+    <td style="white-space: nowrap; text-align: right">26.83</td>
+    <td style="white-space: nowrap; text-align: right">37.27 ms</td>
+    <td style="white-space: nowrap; text-align: right">±5.23%</td>
+    <td style="white-space: nowrap; text-align: right">36.94 ms</td>
+    <td style="white-space: nowrap; text-align: right">44.24 ms</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
-    <td style="white-space: nowrap; text-align: right">3.20</td>
-    <td style="white-space: nowrap; text-align: right">312.83 ms</td>
-    <td style="white-space: nowrap; text-align: right">±3.22%</td>
-    <td style="white-space: nowrap; text-align: right">310.43 ms</td>
-    <td style="white-space: nowrap; text-align: right">353.46 ms</td>
+    <td style="white-space: nowrap; text-align: right">3.12</td>
+    <td style="white-space: nowrap; text-align: right">320.34 ms</td>
+    <td style="white-space: nowrap; text-align: right">±5.17%</td>
+    <td style="white-space: nowrap; text-align: right">313.72 ms</td>
+    <td style="white-space: nowrap; text-align: right">368.94 ms</td>
   </tr>
 </table>
 Comparison
@@ -567,23 +558,23 @@ Comparison
     <th style="text-align: right">Slower</th>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap;text-align: right">368.53</td>
+    <td style="white-space: nowrap;text-align: right">740.80</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
-    <td style="white-space: nowrap; text-align: right">124.50</td>
-    <td style="white-space: nowrap; text-align: right">2.96x</td>
+    <td style="white-space: nowrap; text-align: right">124.75</td>
+    <td style="white-space: nowrap; text-align: right">5.94x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
-    <td style="white-space: nowrap; text-align: right">26.79</td>
-    <td style="white-space: nowrap; text-align: right">13.76x</td>
+    <td style="white-space: nowrap; text-align: right">26.83</td>
+    <td style="white-space: nowrap; text-align: right">27.61x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
-    <td style="white-space: nowrap; text-align: right">3.20</td>
-    <td style="white-space: nowrap; text-align: right">115.29x</td>
+    <td style="white-space: nowrap; text-align: right">3.12</td>
+    <td style="white-space: nowrap; text-align: right">237.31x</td>
   </tr>
 </table>
 Memory Usage
@@ -595,31 +586,30 @@ Memory Usage
   </tr>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap">0.131 MB</td>
+    <td style="white-space: nowrap">0.00154 MB</td>
       <td>&nbsp;</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
     <td style="white-space: nowrap">4.28 MB</td>
-    <td>32.59x</td>
+    <td>2780.17x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
     <td style="white-space: nowrap">35.88 MB</td>
-    <td>272.92x</td>
+    <td>23282.0x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
     <td style="white-space: nowrap">274.98 MB</td>
-    <td>2091.61x</td>
+    <td>178428.65x</td>
   </tr>
 </table>
 <hr/>
 
-**Input: stuff**
+__Input: stuff__
 
 Run Time
-
 <table style="width: 1%">
   <tr>
     <th>Name</th>
@@ -631,35 +621,35 @@ Run Time
   </tr>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap; text-align: right">10.10</td>
-    <td style="white-space: nowrap; text-align: right">0.0990 s</td>
-    <td style="white-space: nowrap; text-align: right">±1.57%</td>
-    <td style="white-space: nowrap; text-align: right">0.0988 s</td>
-    <td style="white-space: nowrap; text-align: right">0.106 s</td>
+    <td style="white-space: nowrap; text-align: right">18.95</td>
+    <td style="white-space: nowrap; text-align: right">0.0528 s</td>
+    <td style="white-space: nowrap; text-align: right">±9.87%</td>
+    <td style="white-space: nowrap; text-align: right">0.0550 s</td>
+    <td style="white-space: nowrap; text-align: right">0.0644 s</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
-    <td style="white-space: nowrap; text-align: right">0.95</td>
-    <td style="white-space: nowrap; text-align: right">1.05 s</td>
-    <td style="white-space: nowrap; text-align: right">±1.31%</td>
-    <td style="white-space: nowrap; text-align: right">1.05 s</td>
-    <td style="white-space: nowrap; text-align: right">1.08 s</td>
+    <td style="white-space: nowrap; text-align: right">0.97</td>
+    <td style="white-space: nowrap; text-align: right">1.04 s</td>
+    <td style="white-space: nowrap; text-align: right">±1.40%</td>
+    <td style="white-space: nowrap; text-align: right">1.04 s</td>
+    <td style="white-space: nowrap; text-align: right">1.07 s</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
-    <td style="white-space: nowrap; text-align: right">0.54</td>
-    <td style="white-space: nowrap; text-align: right">1.86 s</td>
-    <td style="white-space: nowrap; text-align: right">±1.43%</td>
-    <td style="white-space: nowrap; text-align: right">1.86 s</td>
-    <td style="white-space: nowrap; text-align: right">1.90 s</td>
+    <td style="white-space: nowrap; text-align: right">0.53</td>
+    <td style="white-space: nowrap; text-align: right">1.88 s</td>
+    <td style="white-space: nowrap; text-align: right">±1.49%</td>
+    <td style="white-space: nowrap; text-align: right">1.88 s</td>
+    <td style="white-space: nowrap; text-align: right">1.91 s</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
-    <td style="white-space: nowrap; text-align: right">0.0794</td>
-    <td style="white-space: nowrap; text-align: right">12.59 s</td>
-    <td style="white-space: nowrap; text-align: right">±1.63%</td>
-    <td style="white-space: nowrap; text-align: right">12.54 s</td>
-    <td style="white-space: nowrap; text-align: right">12.82 s</td>
+    <td style="white-space: nowrap; text-align: right">0.0812</td>
+    <td style="white-space: nowrap; text-align: right">12.32 s</td>
+    <td style="white-space: nowrap; text-align: right">±0.15%</td>
+    <td style="white-space: nowrap; text-align: right">12.32 s</td>
+    <td style="white-space: nowrap; text-align: right">12.33 s</td>
   </tr>
 </table>
 Comparison
@@ -670,23 +660,23 @@ Comparison
     <th style="text-align: right">Slower</th>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap;text-align: right">10.10</td>
+    <td style="white-space: nowrap;text-align: right">18.95</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
-    <td style="white-space: nowrap; text-align: right">0.95</td>
-    <td style="white-space: nowrap; text-align: right">10.58x</td>
+    <td style="white-space: nowrap; text-align: right">0.97</td>
+    <td style="white-space: nowrap; text-align: right">19.63x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
-    <td style="white-space: nowrap; text-align: right">0.54</td>
-    <td style="white-space: nowrap; text-align: right">18.79x</td>
+    <td style="white-space: nowrap; text-align: right">0.53</td>
+    <td style="white-space: nowrap; text-align: right">35.54x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
-    <td style="white-space: nowrap; text-align: right">0.0794</td>
-    <td style="white-space: nowrap; text-align: right">127.21x</td>
+    <td style="white-space: nowrap; text-align: right">0.0812</td>
+    <td style="white-space: nowrap; text-align: right">233.47x</td>
   </tr>
 </table>
 Memory Usage
@@ -698,23 +688,23 @@ Memory Usage
   </tr>
   <tr>
     <td style="white-space: nowrap">fast_rss</td>
-    <td style="white-space: nowrap">5.52 MB</td>
+    <td style="white-space: nowrap">0.00156 MB</td>
       <td>&nbsp;</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feeder_ex</td>
     <td style="white-space: nowrap">140.58 MB</td>
-    <td>25.48x</td>
+    <td>90326.23x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">elixir_feed_parser</td>
     <td style="white-space: nowrap">1018.78 MB</td>
-    <td>184.61x</td>
+    <td>654577.31x</td>
   </tr>
   <tr>
     <td style="white-space: nowrap">feed_raptor</td>
-    <td style="white-space: nowrap">8425.39 MB</td>
-    <td>1526.77x</td>
+    <td style="white-space: nowrap">8423.70 MB</td>
+    <td>5412308.17x</td>
   </tr>
 </table>
 <hr/>
