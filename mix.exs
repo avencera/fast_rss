@@ -38,9 +38,6 @@ defmodule FastRss.MixProject do
       # rust
       {:rustler, "~> 0.21.0"},
 
-      # json
-      {:jason, "~> 1.1"},
-
       # docs
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
