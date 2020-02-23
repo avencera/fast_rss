@@ -1,20 +1,20 @@
-<h1 align="center" style="border-bottom: none; margin-bottom: 0.25rem;"> FastRSS </h1>
+<p align="center"> <img alt="FastRSS" src="logo.svg"> </p>
 <p align="center">Parse RSS feeds very quickly </p>
-<p align="center" style="margin-bottom: 0.50rem;">
+<p align="center">
     <a href="https://hex.pm/packages/fast_rss"><img alt="Hex.pm" src="https://img.shields.io/hexpm/l/fast_rss"></a>
     <a href="https://hex.pm/packages/fast_rss"><img alt="Hex.pm" src="https://img.shields.io/hexpm/v/fast_rss"></a>
     <a href="https://hex.pm/packages/fast_rss"><img alt="Hex.pm" src="https://img.shields.io/hexpm/dt/fast_rss"></a>
 </p>
-<p align="center" style="font-weight: bold">
-<a href="#installation" style="padding: 0.25rem 0.50rem">Installation</a> 
+<p align="center">
+<a href="#installation">Installation</a> 
 |
-<a href="#usage" style="padding: 0.25rem 0.50rem">Usage</a>
+<a href="#usage">Usage</a>
 |
-<a href="#benchmark" style="padding: 0.25rem 0.50rem">Benchmarks</a>
+<a href="#benchmark">Benchmarks</a>
 |
-<a href="#deploying" style="padding: 0.25rem 0.50rem">Deploying</a>
+<a href="#deploying">Deploying</a>
 |
-<a href="#license" style="padding: 0.25rem 0.50rem">License</a>
+<a href="#license">License</a>
 <p>
 
 ---
