@@ -810,4 +810,4 @@ CMD ["/app/my_app/bin/my_app", "start"]
 
 ## License
 
-FastRSS is released under the Apache License 2.0 - see the [LICENSE](/LICENSE) file.
+FastRSS is released under the Apache License 2.0 - see the [LICENSE](/LICENSE.md) file.
