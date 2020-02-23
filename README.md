@@ -1,15 +1,38 @@
-# FastRSS
+<h1 align="center" style="border-bottom: none; margin-bottom: 0.25rem;"> FastRSS </h1>
+<p align="center">Parse RSS feeds very quickly </p>
+<p align="center" style="margin-bottom: 0.50rem;">
+    <a href="https://hex.pm/packages/fast_rss"><img alt="Hex.pm" src="https://img.shields.io/hexpm/l/fast_rss"></a>
+    <a href="https://hex.pm/packages/fast_rss"><img alt="Hex.pm" src="https://img.shields.io/hexpm/v/fast_rss"></a>
+    <a href="https://hex.pm/packages/fast_rss"><img alt="Hex.pm" src="https://img.shields.io/hexpm/dt/fast_rss"></a>
+</p>
+<p align="center" style="font-weight: bold">
+<a href="#installation" style="padding: 0.25rem 0.50rem">Installation</a> 
+|
+<a href="#usage" style="padding: 0.25rem 0.50rem">Usage</a>
+|
+<a href="#benchmark" style="padding: 0.25rem 0.50rem">Benchmarks</a>
+|
+<a href="#deploying" style="padding: 0.25rem 0.50rem">Deploying</a>
+|
+<a href="#license" style="padding: 0.25rem 0.50rem">License</a>
+<p>
+
+---
+
+## Intro
 
 Parse RSS feeds very quickly
 
 - This is rust NIF built using [rustler](https://github.com/rusterlium/rustler)
-- Uses the [RSS](https://crates.io/crates/rss) crate to do the actual RSS parsing
+- Uses the [RSS](https://crates.io/crates/rss) rust crate to do the actual RSS parsing
 
 **Speed**
 
 Currently this is already much faster than most of the pure elixir/erlang packages out there. In benchmarks there are speed improvements anywhere between **6.12x - 50.09x** over the next fastest package ([feeder_ex](https://github.com/manukall/feeder_ex)) that was tested.
 
 Compared to the slowest elixir options tested ([feed_raptor](https://github.com/merongivian/feedraptor), [elixir_feed_parser](https://github.com/fdietz/elixir-feed-parser)), FastRSS was sometimes **259.91x** faster and used **5,412,308.17x** less memory _(0.00156 MB vs 8423.70 MB)_.
+
+See full [benchmarks](#benchmark) below:
 
 ## Installation
 
@@ -47,7 +70,21 @@ iex(2)> Map.keys(map_of_rss)
 
 The docs can be found at [https://hexdocs.pm/fast_rss](https://hexdocs.pm/fast_rss).
 
+### Supported Feeds
+
+Reading from the following RSS versions is supported:
+
+- RSS 0.90
+- RSS 0.91
+- RSS 0.92
+- RSS 1.0
+- RSS 2.0
+- iTunes
+- Dublin Core
+
 ## Benchmark
+
+HTML: [https://avencera.github.io/fast_rss/](https://avencera.github.io/fast_rss/)
 
 Benchmark run from 2020-02-22 05:23:47.524699Z UTC
 
@@ -713,3 +750,64 @@ Memory Usage
   </tr>
 </table>
 <hr/>
+
+## Deploying
+
+Deploying rust NIFs can be a little bit annoying as you have to install the rust compiler. If you are having trouble deploying this package make an issue and I will try and help you out.
+
+I will then add it to the FAQ below.
+
+### Q. How do I deploy using an Alpine Dockerfile?
+
+#### A. I recommend using a [multi-stage Dockerfile](https://docs.docker.com/develop/develop-images/multistage-build/), and doing the following
+
+1. On the stages where you build all your deps, and build your release make sure to install `build-base` and `libgcc`:
+
+```docker
+# This step installs all the build tools we'll need
+RUN apk update && \
+    apk upgrade --no-cache && \
+    apk add --no-cache \
+    git \
+    curl \
+    build-base \
+    libgcc  && \
+    mix local.rebar --force && \
+    mix local.hex --force
+```
+
+2. Install the rust compiler and set the flag to enable dynamic linking to the C library
+
+```docker
+# install rustup
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+RUN source /root/.cargo/env
+ENV RUSTUP_HOME=/root/.rustup \
+    RUSTFLAGS="-C target-feature=-crt-static" \
+    CARGO_HOME=/root/.cargo  \
+    PATH="/root/.cargo/bin:$PATH"
+```
+
+3. On the stage where you actually run your elixir release install `libgcc`:
+
+```docker
+################################################################################
+## STEP 4 - FINAL
+FROM alpine:3.11
+
+ENV MIX_ENV=prod
+
+RUN apk update && \
+    apk add --no-cache \
+    bash \
+    libgcc \
+    openssl-dev
+
+COPY --from=release-builder /opt/built /app
+WORKDIR /app
+CMD ["/app/my_app/bin/my_app", "start"]
+```
+
+## License
+
+FastRSS is released under the Apache License 2.0 - see the [LICENSE](/LICENSE) file.
