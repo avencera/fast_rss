@@ -773,10 +773,14 @@ RUN apk update && \
     build-base \
     libgcc  && \
     mix local.rebar --force && \
+    mix local.hex --force
+```
+
+2. Install the rust compiler and allow dynamic linking to the C library by setting the rust flag
+
 ```docker
 # install rustup
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-RUN source /root/.cargo/env
 ENV RUSTUP_HOME=/root/.rustup \
     RUSTFLAGS="-C target-feature=-crt-static" \
     CARGO_HOME=/root/.cargo  \
@@ -805,4 +809,4 @@ CMD ["/app/my_app/bin/my_app", "start"]
 
 ## License
 
-FastRSS is released under the Apache License 2.0 - see the [LICENSE](/LICENSE.md) file.
+FastRSS is released under the Apache License 2.0 - see the [LICENSE](LICENSE.md) file.
