@@ -5,7 +5,7 @@ defmodule FastRss.MixProject do
     [
       app: :fast_rss,
       version: "0.3.0",
-      elixir: "~> 1.8",
+      elixir: "~> 1.6",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       # hex
