@@ -1,4 +1,5 @@
 use rss;
+use rustler::schedule::SchedulerFlags;
 use rustler::{Env, NifResult, Term};
 use serde_json;
 use serde_json::json;
@@ -16,7 +17,7 @@ mod atoms {
 rustler::rustler_export_nifs! {
     "Elixir.FastRSS.Native",
     [
-        ("parse", 1, parse)
+        ("parse", 1, parse, SchedulerFlags::DirtyCpu),
     ],
     None
 }

@@ -18,11 +18,13 @@ defmodule FastRSS do
   def parse(""), do: {:error, "Cannot parse blank string"}
 
   def parse(rss_string) when is_binary(rss_string) do
-    case Native.parse(rss_string) do
-      %{"Ok" => map} -> {:ok, map}
-      %{"Err" => msg} -> {:error, msg}
-    end
+    rss_string
+    |> Native.parse()
+    |> map_to_tuple()
   end
 
   def parse(_somethig_else), do: {:error, "RSS feed must be passed in as a string"}
+
+  defp map_to_tuple(%{"Ok" => map}), do: {:ok, map}
+  defp map_to_tuple(%{"Err" => msg}), do: {:error, msg}
 end

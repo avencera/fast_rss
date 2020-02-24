@@ -7,6 +7,10 @@
     <a href="https://hexdocs.pm/fast_rss"><img alt="HexDocs.pm" src="https://img.shields.io/badge/hexdocs-documentation-brightgreen.svg"></a>
 </p>
 <p align="center">
+<a href="#intro">Intro</a> 
+|
+<a href="#compatibility">Compatibility</a> 
+|
 <a href="#installation">Installation</a> 
 |
 <a href="#usage">Usage</a>
@@ -34,6 +38,11 @@ Currently this is already much faster than most of the pure elixir/erlang packag
 Compared to the slowest elixir options tested ([feed_raptor](https://github.com/merongivian/feedraptor), [elixir_feed_parser](https://github.com/fdietz/elixir-feed-parser)), FastRSS was sometimes **259.91x** faster and used **5,412,308.17x** less memory _(0.00156 MB vs 8423.70 MB)_.
 
 See full [benchmarks](#benchmark) below:
+
+## Compatibility
+
+FastRSS requires a minimum combination of Elixir 1.6.0 and Erlang/OTP 20.0, and is tested with a maximum combination of Elixir 1.10.1 and Erlang/OTP 22.0.
+
 
 ## Installation
 
