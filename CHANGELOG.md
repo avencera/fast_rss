@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [0.3.0]
+
+- Use erlang dirty scheduler
+- Now requires OTP >= 20
+- Added benchmark for normal vs dirty: [normal vs dirty](bench/output/dirty_vs_normal.md)
+
 ## [0.2.0]
 
 ### User

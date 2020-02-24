@@ -26,7 +26,7 @@ defmodule Benchmarks.MixProject do
       {:benchee_markdown, "~> 0.1"},
 
       # libs to compare
-      {:fast_rss, "~> 0.2.0", path: "../", override: true},
+      {:fast_rss, "~> 0.3.0", path: "../", override: true},
       {:feedraptor, "~> 0.3.0"},
       {:elixir_feed_parser, "~> 0.0.1"},
       {:feeder_ex, "~> 1.1"}
