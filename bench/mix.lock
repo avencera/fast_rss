@@ -8,6 +8,7 @@
   "combine": {:hex, :combine, "0.10.0", "eff8224eeb56498a2af13011d142c5e7997a80c8f5b97c499f84c841032e429f", [:mix], [], "hexpm"},
   "deep_merge": {:hex, :deep_merge, "1.0.0", "b4aa1a0d1acac393bdf38b2291af38cb1d4a52806cf7a4906f718e1feb5ee961", [:mix], [], "hexpm"},
   "elixir_feed_parser": {:hex, :elixir_feed_parser, "0.0.1", "20bfddc342c401429b3910acbfd9f075037d204b6d82a467292d7fce55c8e76b", [:mix], [], "hexpm"},
+  "fast_rss": {:hex, :fast_rss, "0.3.0", "244f30e4ca17522eec718e39f62a02cb5da41dafa2feee05c30b0dc9f6472bc3", [:mix], [{:rustler, "~> 0.21.0", [hex: :rustler, repo: "hexpm", optional: false]}], "hexpm"},
   "feeder": {:hex, :feeder, "2.3.2", "18792e18ae2928885e1859ecfbac6fc7a2ec6e99efa51828160e530b2a188c8b", [:make], [], "hexpm"},
   "feeder_ex": {:hex, :feeder_ex, "1.1.0", "0be3732255cdb45dec949e0ede6852b5261c9ff173360e8274a6ac65183b2b55", [:mix], [{:feeder, "~> 2.2", [hex: :feeder, repo: "hexpm", optional: false]}], "hexpm"},
   "feedraptor": {:hex, :feedraptor, "0.3.0", "fdde107510fd8e70822ef49453ad1976b9b805fa9a603c92cb844b2397600776", [:mix], [{:capuli, "~> 0.3.0", [hex: :capuli, repo: "hexpm", optional: false]}, {:timex, ">= 3.0.0", [hex: :timex, repo: "hexpm", optional: false]}], "hexpm"},

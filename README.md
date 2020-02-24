@@ -1,4 +1,4 @@
-<p align="center"> <img alt="FastRSS" src="logo.svg"> </p>
+<p align="center"> <img alt="FastRSS" src="https://avencera.github.io/fast_rss/logo.svg"> </p>
 <p align="center">Parse RSS feeds very quickly </p>
 <p align="center">
     <a href="https://hex.pm/packages/fast_rss"><img alt="Hex.pm" src="https://img.shields.io/hexpm/l/fast_rss"></a>
@@ -7,20 +7,20 @@
     <a href="https://hexdocs.pm/fast_rss"><img alt="HexDocs.pm" src="https://img.shields.io/badge/hexdocs-documentation-brightgreen.svg"></a>
 </p>
 <p align="center">
-<a href="#intro">Intro</a> 
-|
-<a href="#compatibility">Compatibility</a> 
-|
-<a href="#installation">Installation</a> 
-|
-<a href="#usage">Usage</a>
-|
-<a href="#benchmark">Benchmarks</a>
-|
-<a href="#deploying">Deploying</a>
-|
-<a href="LICENSE.md">License</a>
-<p>
+  <a href="#intro">Intro</a> 
+  |
+  <a href="#compatibility">Compatibility</a> 
+  |
+  <a href="#installation">Installation</a> 
+  |
+  <a href="#usage">Usage</a>
+  |
+  <a href="#benchmark">Benchmarks</a>
+  |
+  <a href="#deploying">Deploying</a>
+  |
+  <a href="LICENSE.md">License</a>
+</p>
 
 ---
 
