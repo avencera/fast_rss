@@ -26,5 +26,7 @@ defmodule FastRSS do
   def parse(_somethig_else), do: {:error, "RSS feed must be passed in as a string"}
 
   defp map_to_tuple(%{"Ok" => map}), do: {:ok, map}
+  defp map_to_tuple({:ok, map}), do: {:ok, map}
   defp map_to_tuple(%{"Err" => msg}), do: {:error, msg}
+  defp map_to_tuple({:error, msg}), do: {:unknown_error, msg}
 end

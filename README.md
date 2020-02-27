@@ -141,7 +141,7 @@ Benchmark suite executing with the following configuration:
   </tr>
 </table>
 
-## Statistics
+### Statistics
 
 **Input: anxiety**
 
