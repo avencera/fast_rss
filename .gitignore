@@ -26,6 +26,7 @@ fast_rss-*.tar
 .elixir_ls
 priv/native/libfastrss.so
 native/fastrss/target
+/native/*/target
 
 bench/output/assets
 bench/output/*.html

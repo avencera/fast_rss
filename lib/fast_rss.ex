@@ -28,5 +28,5 @@ defmodule FastRSS do
   defp map_to_tuple(%{"Ok" => map}), do: {:ok, map}
   defp map_to_tuple({:ok, map}), do: {:ok, map}
   defp map_to_tuple(%{"Err" => msg}), do: {:error, msg}
-  defp map_to_tuple({:error, msg}), do: {:unknown_error, msg}
+  defp map_to_tuple({:error, msg}), do: {:error, msg}
 end
