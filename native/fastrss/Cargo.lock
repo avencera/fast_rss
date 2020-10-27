@@ -67,7 +67,7 @@ dependencies = [
 
 [[package]]
 name = "fastrss"
-version = "0.3.0"
+version = "0.3.4"
 dependencies = [
  "lazy_static",
  "rss",

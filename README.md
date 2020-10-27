@@ -43,7 +43,6 @@ See full [benchmarks](#benchmark) below:
 
 FastRSS requires a minimum combination of Elixir 1.6.0 and Erlang/OTP 20.0, and is tested with a maximum combination of Elixir 1.10.1 and Erlang/OTP 22.0.
 
-
 ## Installation
 
 This package is available on [hex](https://hex.pm/packages/fast_rss).
@@ -53,7 +52,7 @@ It can be installed by adding `fast_rss` to your list of dependencies in `mix.ex
 ```elixir
 def deps do
   [
-    {:fast_rss, "~> 0.3.0"}
+    {:fast_rss, "~> 0.3.4"}
   ]
 end
 ```
