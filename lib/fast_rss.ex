@@ -1,6 +1,6 @@
 defmodule FastRSS do
   @moduledoc """
-  Parse RSS quickly using a Rust nif.
+  Parse RSS quickly using a Rust NIF.
   """
 
   defmodule Native do
@@ -12,7 +12,7 @@ defmodule FastRSS do
   end
 
   @doc """
-  Parse a RSS string into a map
+  Parse a RSS string into a map.
   """
   @spec parse(String.t()) :: {:ok, map()} | {:error, String.t()}
   def parse(""), do: {:error, "Cannot parse blank string"}
