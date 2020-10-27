@@ -41,7 +41,7 @@ See full [benchmarks](#benchmark) below:
 
 ## Compatibility
 
-FastRSS requires a minimum combination of Elixir 1.6.0 and Erlang/OTP 20.0, and is tested with a maximum combination of Elixir 1.10.1 and Erlang/OTP 22.0.
+FastRSS requires a minimum combination of Elixir 1.6.0 and Erlang/OTP 20.0, and is tested with a maximum combination of Elixir 1.11.1 and Erlang/OTP 22.0.
 
 ## Installation
 
