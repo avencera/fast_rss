@@ -1,6 +1,7 @@
 defmodule FastRss.MixProject do
   use Mix.Project
 
+  @source_url "https://github.com/avencera/fast_rss"
   @version "0.3.4"
 
   def project do
@@ -17,7 +18,6 @@ defmodule FastRss.MixProject do
       package: package(),
 
       # docs
-      source_url: "https://github.com/avencera/fast_rss",
       homepage_url: "https://avencera.github.io/fast_rss/",
       docs: docs(),
 
@@ -33,7 +33,10 @@ defmodule FastRss.MixProject do
       files: ["lib", "native", "mix.exs", "README.md", "LICENSE.md"],
       maintainers: ["Praveen Perera"],
       licenses: ["Apache-2.0"],
-      links: %{"GitHub" => "https://github.com/avencera/fast_rss"}
+      links: %{
+        "Changelog" => "#{@source_url}/blob/master/CHANGELOG.md",
+        "GitHub" => @source_url
+      }
     ]
   end
 
@@ -42,7 +45,8 @@ defmodule FastRss.MixProject do
       main: "readme",
       markdown_processor: ExDoc.Markdown.Earmark,
       extras: ["README.md", "CHANGELOG.md", "LICENSE.md"],
-      source_ref: "v#{@version}"
+      source_ref: "v#{@version}",
+      source_url: @source_url,
     ]
   end
 

@@ -7,11 +7,11 @@
     <a href="https://hexdocs.pm/fast_rss"><img alt="HexDocs.pm" src="https://img.shields.io/badge/hex-docs-purple.svg"></a>
 </p>
 <p align="center">
-  <a href="#intro">Intro</a> 
+  <a href="#intro">Intro</a>
   |
-  <a href="#compatibility">Compatibility</a> 
+  <a href="#compatibility">Compatibility</a>
   |
-  <a href="#installation">Installation</a> 
+  <a href="#installation">Installation</a>
   |
   <a href="#usage">Usage</a>
   |
@@ -770,51 +770,51 @@ I will then add it to the FAQ below.
 
 #### A. I recommend using a [multi-stage Dockerfile](https://docs.docker.com/develop/develop-images/multistage-build/), and doing the following
 
-1. On the stages where you build all your deps, and build your release make sure to install `build-base` and `libgcc`:
+1.  On the stages where you build all your deps, and build your release make sure to install `build-base` and `libgcc`:
 
-```docker
-# This step installs all the build tools we'll need
-RUN apk update && \
-    apk upgrade --no-cache && \
-    apk add --no-cache \
-    git \
-    curl \
-    build-base \
-    libgcc  && \
-    mix local.rebar --force && \
-    mix local.hex --force
-```
+    ```docker
+    # This step installs all the build tools we'll need
+    RUN apk update && \
+        apk upgrade --no-cache && \
+        apk add --no-cache \
+        git \
+        curl \
+        build-base \
+        libgcc  && \
+        mix local.rebar --force && \
+        mix local.hex --force
+    ```
 
-2. Install the rust compiler and allow dynamic linking to the C library by setting the rust flag
+2.  Install the rust compiler and allow dynamic linking to the C library by setting the rust flag
 
-```docker
-# install rustup
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV RUSTUP_HOME=/root/.rustup \
-    RUSTFLAGS="-C target-feature=-crt-static" \
-    CARGO_HOME=/root/.cargo  \
-    PATH="/root/.cargo/bin:$PATH"
-```
+    ```docker
+    # install rustup
+    RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    ENV RUSTUP_HOME=/root/.rustup \
+        RUSTFLAGS="-C target-feature=-crt-static" \
+        CARGO_HOME=/root/.cargo  \
+        PATH="/root/.cargo/bin:$PATH"
+    ```
 
-3. On the stage where you actually run your elixir release install `libgcc`:
+3.  On the stage where you actually run your elixir release install `libgcc`:
 
-```docker
-################################################################################
-## STEP 4 - FINAL
-FROM alpine:3.11
+    ```docker
+    ################################################################################
+    ## STEP 4 - FINAL
+    FROM alpine:3.11
 
-ENV MIX_ENV=prod
+    ENV MIX_ENV=prod
 
-RUN apk update && \
-    apk add --no-cache \
-    bash \
-    libgcc \
-    openssl-dev
+    RUN apk update && \
+        apk add --no-cache \
+        bash \
+        libgcc \
+        openssl-dev
 
-COPY --from=release-builder /opt/built /app
-WORKDIR /app
-CMD ["/app/my_app/bin/my_app", "start"]
-```
+    COPY --from=release-builder /opt/built /app
+    WORKDIR /app
+    CMD ["/app/my_app/bin/my_app", "start"]
+    ```
 
 ## License
 
