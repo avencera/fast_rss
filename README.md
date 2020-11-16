@@ -772,7 +772,7 @@ I will then add it to the FAQ below.
 
 1.  On the stages where you build all your deps, and build your release make sure to install `build-base` and `libgcc`:
 
-    ```docker
+    ```dockerfile
     # This step installs all the build tools we'll need
     RUN apk update && \
         apk upgrade --no-cache && \
@@ -787,7 +787,7 @@ I will then add it to the FAQ below.
 
 2.  Install the rust compiler and allow dynamic linking to the C library by setting the rust flag
 
-    ```docker
+    ```dockerfile
     # install rustup
     RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
     ENV RUSTUP_HOME=/root/.rustup \
@@ -798,7 +798,7 @@ I will then add it to the FAQ below.
 
 3.  On the stage where you actually run your elixir release install `libgcc`:
 
-    ```docker
+    ```dockerfile
     ################################################################################
     ## STEP 4 - FINAL
     FROM alpine:3.11
