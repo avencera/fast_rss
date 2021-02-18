@@ -1,11 +1,6 @@
-use rss;
 use rustler::schedule::SchedulerFlags;
 use rustler::{Encoder, Env, Error as RustlerError, NifResult, Term};
-use serde_json;
 use serde_json::json;
-
-use serde_rustler;
-use serde_transcode;
 
 mod atoms {
     rustler::rustler_atoms! {
