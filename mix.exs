@@ -2,7 +2,7 @@ defmodule FastRss.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/avencera/fast_rss"
-  @version "0.3.4"
+  @version "0.3.5"
 
   def project do
     [
@@ -46,7 +46,7 @@ defmodule FastRss.MixProject do
       markdown_processor: ExDoc.Markdown.Earmark,
       extras: ["README.md", "CHANGELOG.md", "LICENSE.md"],
       source_ref: "v#{@version}",
-      source_url: @source_url,
+      source_url: @source_url
     ]
   end
 
