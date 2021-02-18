@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Now compiles on M1 (arm64) macs, thanks @29decibel
+- Now compiles on M1 (arm64) macs, thanks [@29decibel](https://github.com/29decibel)
 
 ### Internal
 
