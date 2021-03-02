@@ -1,4 +1,4 @@
-defmodule FastRss.MixProject do
+defmodule FastRSS.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/avencera/fast_rss"

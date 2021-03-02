@@ -1,8 +1,8 @@
-defmodule FastRssTest do
+defmodule FastRSSTest do
   use ExUnit.Case
-  doctest FastRss
+  doctest FastRSS
 
   test "greets the world" do
-    assert FastRss.hello() == :world
+    assert FastRSS.hello() == :world
   end
 end
