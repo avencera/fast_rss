@@ -2,7 +2,7 @@
 authors = []
 edition = "2018"
 name = "fastrss"
-version = "0.3.4"
+version = "0.3.6"
 
 [lib]
 crate-type = ["dylib"]
