@@ -19,7 +19,7 @@
   |
   <a href="#deploying">Deploying</a>
   |
-  <a href="LICENSE.md">License</a>
+  <a href="LICENSE">License</a>
 </p>
 
 ---
