@@ -30,7 +30,16 @@ defmodule FastRSS.MixProject do
 
   defp package() do
     [
-      files: ["lib", "native", "mix.exs", "README.md", "LICENSE.md"],
+      files: [
+        "lib",
+        "native/fastrss/.cargo",
+        "native/fastrss/src",
+        "native/fastrss/Cargo.toml",
+        "native/fastrss/Cargo.lock",
+        "mix.exs",
+        "README.md",
+        "LICENSE"
+      ],
       maintainers: ["Praveen Perera"],
       licenses: ["Apache-2.0"],
       links: %{
