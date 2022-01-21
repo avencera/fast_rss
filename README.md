@@ -5,7 +5,9 @@
     <a href="https://hex.pm/packages/fast_rss"><img alt="Hex.pm" src="https://img.shields.io/hexpm/v/fast_rss"></a>
     <a href="https://hex.pm/packages/fast_rss"><img alt="Hex.pm" src="https://img.shields.io/hexpm/dt/fast_rss"></a>
     <a href="https://hexdocs.pm/fast_rss"><img alt="HexDocs.pm" src="https://img.shields.io/badge/hex-docs-purple.svg"></a>
+    <a href="https://github.com/avencera/fast_rss/commits/master"><img alt="last commit" src="https://img.shields.io/github/last-commit/avencera/fast_rss.svg"></a>
 </p>
+
 <p align="center">
   <a href="#intro">Intro</a>
   |
