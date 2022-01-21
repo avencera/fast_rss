@@ -818,4 +818,4 @@ I will then add it to the FAQ below.
 
 ## License
 
-FastRSS is released under the Apache License 2.0 - see the [LICENSE](LICENSE.md) file.
+FastRSS is released under the Apache License 2.0 - see the [LICENSE](LICENSE) file.

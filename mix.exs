@@ -53,7 +53,7 @@ defmodule FastRSS.MixProject do
     [
       main: "readme",
       markdown_processor: ExDoc.Markdown.Earmark,
-      extras: ["README.md", "CHANGELOG.md", "LICENSE.md"],
+      extras: ["README.md", "CHANGELOG.md", "LICENSE"],
       source_ref: "v#{@version}",
       source_url: @source_url
     ]
