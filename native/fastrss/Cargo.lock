@@ -67,12 +67,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "quick-error"
-version = "1.2.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a1d01941d82fa2ab50be1e79e6714289dd7cde78eba4c074bc5a4374f650dfe0"
-
-[[package]]
 name = "quick-xml"
 version = "0.20.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -103,9 +97,9 @@ dependencies = [
 
 [[package]]
 name = "rustler"
-version = "0.22.2"
+version = "0.23.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "08281b5931d395414fe2e3e786d4b21dbcffc18d848d542d8a2da03026cb7cb8"
+checksum = "8ac79e5fcfae809c16ff8da548daa291933b7ec8d66eadc197cdccec46891625"
 dependencies = [
  "lazy_static",
  "rustler_codegen",
@@ -114,9 +108,9 @@ dependencies = [
 
 [[package]]
 name = "rustler_codegen"
-version = "0.22.2"
+version = "0.23.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "96f4adf61752ab8c56df102591ff97c93d4e5c7a9ff04b82cdfa85dfa072544c"
+checksum = "10d303c303a145c1f3d2a2993527128badb9500101070c55e36ef9bb2417666a"
 dependencies = [
  "heck",
  "proc-macro2",
@@ -182,12 +176,13 @@ dependencies = [
 [[package]]
 name = "serde_rustler"
 version = "0.1.0"
-source = "git+https://github.com/satoren/serde_rustler.git?branch=rustler_0.22#0273c8aff4d9407f046dd9bf5d5f61d309d9a55f"
+source = "git+https://github.com/avencera/serde_rustler.git?branch=rustler-0.23#aa629944a967779e0d2db90386d9cf17a2dc1858"
 dependencies = [
  "lazy_static",
- "quick-error",
  "rustler",
+ "rustler_codegen",
  "serde",
+ "thiserror",
 ]
 
 [[package]]
@@ -199,6 +194,26 @@ dependencies = [
  "proc-macro2",
  "quote",
  "unicode-xid",
+]
+
+[[package]]
+name = "thiserror"
+version = "1.0.30"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "854babe52e4df1653706b98fcfc05843010039b406875930a70e4d9644e5c417"
+dependencies = [
+ "thiserror-impl",
+]
+
+[[package]]
+name = "thiserror-impl"
+version = "1.0.30"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "aa32fd3f627f367fe16f893e2597ae3c05020f8bba2666a4e6ea73d377e5714b"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]
