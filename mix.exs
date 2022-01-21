@@ -23,7 +23,7 @@ defmodule FastRSS.MixProject do
 
       # rustler
       start_permanent: Mix.env() == :prod,
-      compilers: [:rustler] ++ Mix.compilers(),
+      compilers: Mix.compilers(),
       rustler_crates: [fastrss: []]
     ]
   end
@@ -59,7 +59,7 @@ defmodule FastRSS.MixProject do
   defp deps do
     [
       # rust
-      {:rustler, "~> 0.21.0"},
+      {:rustler, "~> 0.23.0"},
 
       # docs
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}

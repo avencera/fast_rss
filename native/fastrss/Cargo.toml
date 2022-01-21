@@ -12,8 +12,9 @@ path = "src/lib.rs"
 [dependencies]
 lazy_static = "1.4"
 rss = {version = "1.9", features = ["serde"], default-features = false}
-rustler = "0.22"
+rustler = "0.23"
+
 serde = "1.0"
 serde-transcode = "1.1"
 serde_json = "1.0"
-serde_rustler = { git = "https://github.com/satoren/serde_rustler.git", branch = "rustler_0.22" }
+serde_rustler = { git = "https://github.com/avencera/serde_rustler.git", branch = "rustler-0.23" }
