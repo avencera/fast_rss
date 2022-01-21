@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+
+- Added support for OTP24, thanks [@gmile](https://github.com/avencera/fast_rss/pull/11)
+
+### Internal
+
+- Upgraded to rustler 0.23, thanks [@praveenperera](https://github.com/avencera/fast_rss/pull/12)
+
 ## [0.3.5] – 2021-02-18
 
 ### Fixed
