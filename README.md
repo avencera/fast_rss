@@ -54,7 +54,7 @@ It can be installed by adding `fast_rss` to your list of dependencies in `mix.ex
 ```elixir
 def deps do
   [
-    {:fast_rss, "~> 0.3.4"}
+    {:fast_rss, "~> 0.4.0"}
   ]
 end
 ```
