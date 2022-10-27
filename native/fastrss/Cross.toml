@@ -1,0 +1,6 @@
+# Pass relevant config when cross-compiling as a part of release
+# See https://hexdocs.pm/rustler_precompiled/precompilation_guide.html#additional-configuration-before-build
+[build.env]
+passthrough = [
+  "RUSTLER_NIF_VERSION"
+]
