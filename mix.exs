@@ -36,6 +36,7 @@ defmodule FastRSS.MixProject do
         "native/fastrss/src",
         "native/fastrss/Cargo.toml",
         "native/fastrss/Cargo.lock",
+        "checksum-*.exs",
         "mix.exs",
         "README.md",
         "LICENSE"
