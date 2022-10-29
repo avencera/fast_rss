@@ -6,9 +6,9 @@ env:
 on:
   push:
     branches:
-      - main
+      - master
     paths:
-      # Just run on main branch if "native" path changed. Tags will always run.
+      # Just run on master branch if "native" path changed. Tags will always run.
       - "native/**"
       - ".github/workflows/release.yml"
     tags:
