@@ -9,3 +9,4 @@
 7. Checkout the recently create tag.
 8. Once the NIFs are built, use `mix rustler_precompiled.download FastRss.Native --all --print` to download generate the checksum file.
 9. Run `mix hex.publish`.
+10. Bump the version in the `mix.exs` and add the `-dev` flag to it.
