@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.4.2] – 2022-11-14
+
+### Internal
+
+- Added `rustler_precompiled`, thanks @tmr08c [#18](https://github.com/avencera/fast_rss/pull/18)
+
+
 ## [0.4.1] – 2022-01-21
 
 ### Internal
