@@ -36,6 +36,7 @@ defmodule FastRSS.MixProject do
         "native/fastrss/src",
         "native/fastrss/Cargo.toml",
         "native/fastrss/Cargo.lock",
+        "checksum-*.exs",
         "mix.exs",
         "README.md",
         "LICENSE"
@@ -68,7 +69,8 @@ defmodule FastRSS.MixProject do
   defp deps do
     [
       # rust
-      {:rustler, "~> 0.25.0"},
+      {:rustler, "~> 0.25.0", optional: true},
+      {:rustler_precompiled, "~> 0.5"},
 
       # docs
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}

@@ -764,7 +764,7 @@ Memory Usage
 
 ## Deploying
 
-Deploying rust NIFs can be a little bit annoying as you have to install the rust compiler. If you are having trouble deploying this package make an issue and I will try and help you out.
+Deploying rust NIFs can be a little bit annoying as you have to install the rust compiler. We try to alleviate this with [`rustler_precopmiled`](https://hexdocs.pm/rustler_precompiled/RustlerPrecompiled.html), which will create precompiled assets for a number of targets (see [`release.yml`](./.github/workflows/release.yml) for the full list), but does not cover all environments. If you are having trouble deploying this package make an issue and I will try and help you out.
 
 I will then add it to the FAQ below.
 
