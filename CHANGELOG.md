@@ -11,8 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Internal
 
-- Added `rustler_precompiled`, thanks @tmr08c [#18](https://github.com/avencera/fast_rss/pull/18)
-
+- Added `rustler_precompiled`, thanks [@tmr08c](https://github.com/tmr08c), [#18](https://github.com/avencera/fast_rss/pull/18)
+- Update cargo and hex deps
 
 ## [0.4.1] – 2022-01-21
 
@@ -24,11 +24,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Added support for OTP24, thanks [@gmile](https://github.com/avencera/fast_rss/pull/11)
+- Added support for OTP24, thanks [@gmile](https://github.com/gmile), [#11](https://github.com/avencera/fast_rss/pull/11)
 
 ### Internal
 
-- Upgraded to rustler 0.23, thanks [@praveenperera](https://github.com/avencera/fast_rss/pull/12)
+- Upgraded to rustler 0.23, thanks [@praveenperera](https://github.com/praveenperera), [#12](https://github.com/avencera/fast_rss/pull/12)
 
 ## [0.3.5] – 2021-02-18
 
