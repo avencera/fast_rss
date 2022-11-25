@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.4.4] – 2022-11-25
+
+- Attempt to fix precompiled assets for case sensitive filesystems again
+
 ## [0.4.3] – 2022-11-24
 
 - Fix precompiled assets for case sensitive filesystems
