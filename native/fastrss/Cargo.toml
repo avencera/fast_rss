@@ -2,7 +2,7 @@
 authors = []
 edition = "2018"
 name = "fastrss"
-version = "0.3.6"
+version = "0.5.0"
 
 [lib]
 crate-type = ["dylib"]
@@ -10,11 +10,12 @@ name = "fastrss"
 path = "src/lib.rs"
 
 [dependencies]
-lazy_static = "1.4"
-rss = {version = "2.0", features = ["serde"], default-features = false}
-rustler = "0.25"
+rss = {version = "2.0", features = ["serde"], default-features = false }
+atom_syndication = { version = "0.12", features = ["with-serde"], default-features = false }
+
+rustler = "0.29"
 
 serde = "1.0"
 serde-transcode = "1.1"
 serde_json = "1.0"
-serde_rustler = { git = "https://github.com/almirsarajcic/serde_rustler.git", branch = "rustler-0.25" }
+serde_rustler = { git = "https://github.com/avencera/serde_rustler.git", branch = "rustler-0-29" }
