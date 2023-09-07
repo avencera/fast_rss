@@ -26,7 +26,7 @@ defmodule FastRSS do
   Parse a RSS string into a map.
   """
   @spec parse(String.t()) :: {:ok, map()} | {:error, String.t()}
-  @since "0.5.0"
+  @doc since: "0.5.0"
   @deprecated "Use FastRSS.parse_rss/1 instead"
   def parse(""), do: {:error, "Cannot parse blank string"}
   def parse(rss_string) when is_binary(rss_string), do: parse_rss(rss_string)
@@ -36,7 +36,7 @@ defmodule FastRSS do
   Parse a RSS string into a map.
   """
   @spec parse_rss(String.t()) :: {:ok, map()} | {:error, String.t()}
-  @since "0.5.0"
+  @doc since: "0.5.0"
   def parse_rss(""), do: {:error, "Cannot parse blank string"}
 
   def parse_rss(rss_string) when is_binary(rss_string) do
@@ -51,7 +51,7 @@ defmodule FastRSS do
   Parse a Atom string into a map.
   """
   @spec parse_atom(String.t()) :: {:ok, map()} | {:error, String.t()}
-  @since "0.5.0"
+  @doc since: "0.5.0"
   def parse_atom(""), do: {:error, "Cannot parse blank string"}
 
   def parse_atom(atom_string) when is_binary(atom_string) do
