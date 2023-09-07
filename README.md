@@ -54,7 +54,7 @@ It can be installed by adding `fast_rss` to your list of dependencies in `mix.ex
 ```elixir
 def deps do
   [
-    {:fast_rss, "~> 0.4.0"}
+    {:fast_rss, "~> 0.5.0"}
   ]
 end
 ```
@@ -67,10 +67,10 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 ## Usage
 
-There is only one function it takes an RSS string and outputs an `{:ok, map()}` with string keys.
+There is only two functions, one for parsing rss `parse_rss/1` and one for parsing atom feeds `parse_atom/1` they takes a string and outputs an `{:ok, map()}` with string keys.
 
 ```elixir
-iex(1)>  {:ok, map_of_rss} = FastRSS.parse("...rss_feed_string...")
+iex(1)>  {:ok, map_of_rss} = FastRSS.parse_rss("...rss_feed_string...")
 iex(2)> Map.keys(map_of_rss)
 ["categories", "cloud", "copyright", "description", "docs", "dublin_core_ext",
  "extensions", "generator", "image", "items", "itunes_ext", "language",
@@ -92,6 +92,7 @@ Reading from the following RSS versions is supported:
 - RSS 2.0
 - iTunes
 - Dublin Core
+- Atom
 
 ## Benchmark
 

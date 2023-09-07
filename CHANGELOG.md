@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+- Add support for parsing Atom feeds (`parse_atom/1`)
+- Deprecate `parse/1` function in favor or `parse_rss/1` function
+
 ## [0.4.4] – 2022-11-25
 
 - Attempt to fix precompiled assets for case sensitive filesystems again
