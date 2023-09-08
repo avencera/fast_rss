@@ -2,7 +2,7 @@ defmodule FastRSS.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/avencera/fast_rss"
-  @version "0.4.4"
+  @version "0.5.0"
 
   def project do
     [
@@ -69,8 +69,8 @@ defmodule FastRSS.MixProject do
   defp deps do
     [
       # rust
-      {:rustler, "~> 0.25.0", optional: true},
-      {:rustler_precompiled, "~> 0.5"},
+      {:rustler, "~> 0.29.0", optional: true},
+      {:rustler_precompiled, "~> 0.6"},
 
       # docs
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}

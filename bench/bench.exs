@@ -14,7 +14,7 @@ elixir_feed_parser = fn xml_string ->
 end
 
 parse_jobs = %{
-  "fast_rss" => &FastRSS.parse/1,
+  "fast_rss" => &FastRSS.parse_rss/1,
   "elixir_feed_parser" => fn string -> elixir_feed_parser.(string) end,
   "feed_raptor" => &Feedraptor.parse/1,
   "feeder_ex" => &FeederEx.parse/1
