@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.5.0] – 2023-09-08
+
 - Add support for parsing Atom feeds (`parse_atom/1`)
 - Deprecate `parse/1` function in favor or `parse_rss/1` function
 
