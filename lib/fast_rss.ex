@@ -24,10 +24,12 @@ defmodule FastRSS do
 
   @doc """
   Parse a RSS string into a map.
-  """
-  @spec parse(String.t()) :: {:ok, map()} | {:error, String.t()}
+
+  soft deprecated: "Use FastRSS.parse_rss/1 instead"
   @doc since: "0.5.0"
   @deprecated "Use FastRSS.parse_rss/1 instead"
+  """
+  @spec parse(String.t()) :: {:ok, map()} | {:error, String.t()}
   def parse(""), do: {:error, "Cannot parse blank string"}
   def parse(rss_string) when is_binary(rss_string), do: parse_rss(rss_string)
   def parse(_something_else), do: {:error, "RSS feed must be passed in as a string"}
