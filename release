@@ -1,0 +1,4 @@
+#!/bin/bash
+
+git tag -a $TAG -m $TAG
+git push --tags
