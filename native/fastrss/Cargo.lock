@@ -257,7 +257,7 @@ dependencies = [
 [[package]]
 name = "serde_rustler"
 version = "0.1.0"
-source = "git+https://github.com/almirsarajcic/serde_rustler.git?branch=rustler-0.33#b970ffd580ccb7a811eab20239771f6cc284a43d"
+source = "git+https://github.com/avencera/serde_rustler.git?branch=master#e2cc53cf59ec98ace515697f10fbc6e93659fdc5"
 dependencies = [
  "lazy_static",
  "rustler",
