@@ -13,9 +13,9 @@ path = "src/lib.rs"
 rss = {version = "2.0", features = ["serde"], default-features = false }
 atom_syndication = { version = "0.12", features = ["with-serde"], default-features = false }
 
-rustler = "0.29"
+rustler = "0.33"
 
 serde = "1.0"
 serde-transcode = "1.1"
 serde_json = "1.0"
-serde_rustler = { git = "https://github.com/avencera/serde_rustler.git", branch = "rustler-0-29" }
+serde_rustler = { git = "https://github.com/avencera/serde_rustler.git", branch = "master" }

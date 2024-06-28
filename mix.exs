@@ -69,8 +69,8 @@ defmodule FastRSS.MixProject do
   defp deps do
     [
       # rust
-      {:rustler, "~> 0.29.0", optional: true},
-      {:rustler_precompiled, "~> 0.6"},
+      {:rustler, "~> 0.33.0", optional: true},
+      {:rustler_precompiled, "~> 0.7"},
 
       # docs
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
