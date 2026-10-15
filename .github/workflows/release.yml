@@ -29,24 +29,24 @@ jobs:
       matrix:
         nif: ["2.16", "2.15", "2.14"]
         job:
-          - { target: aarch64-apple-darwin        , os: macos-11      }
-          - { target: aarch64-unknown-linux-gnu   , os: ubuntu-20.04 , use-cross: true }
-          - { target: aarch64-unknown-linux-musl  , os: ubuntu-20.04 , use-cross: true }
-          - { target: arm-unknown-linux-gnueabihf , os: ubuntu-20.04 , use-cross: true }
-          - { target: riscv64gc-unknown-linux-gnu , os: ubuntu-20.04 , use-cross: true }
-          - { target: x86_64-apple-darwin         , os: macos-11      }
-          - { target: x86_64-pc-windows-gnu       , os: windows-2019  }
-          - { target: x86_64-pc-windows-msvc      , os: windows-2019  }
-          - { target: x86_64-unknown-linux-gnu    , os: ubuntu-20.04  }
-          - { target: x86_64-unknown-linux-musl   , os: ubuntu-20.04 , use-cross: true }
+          - { target: aarch64-apple-darwin        , os: macos-15      }
+          - { target: aarch64-unknown-linux-gnu   , os: ubuntu-22.04 , use-cross: true }
+          - { target: aarch64-unknown-linux-musl  , os: ubuntu-22.04 , use-cross: true }
+          - { target: arm-unknown-linux-gnueabihf , os: ubuntu-22.04 , use-cross: true }
+          - { target: riscv64gc-unknown-linux-gnu , os: ubuntu-22.04 , use-cross: true }
+          - { target: x86_64-apple-darwin         , os: macos-15      }
+          - { target: x86_64-pc-windows-gnu       , os: windows-2025  }
+          - { target: x86_64-pc-windows-msvc      , os: windows-2025  }
+          - { target: x86_64-unknown-linux-gnu    , os: ubuntu-22.04  }
+          - { target: x86_64-unknown-linux-musl   , os: ubuntu-22.04 , use-cross: true }
 
     env:
       RUSTLER_NIF_VERSION: ${{ matrix.nif }}
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
-      - uses: actions/cache@v3.0.9
+      - uses: actions/cache@v6
         with:
           path: |
             ~/.cargo/bin/
@@ -71,12 +71,9 @@ jobs:
           echo "PROJECT_VERSION=$(sed -n 's/^  @version "\(.*\)"/\1/p' ../../mix.exs | head -n1)" >> $GITHUB_ENV
 
       - name: Install Rust toolchain
-        uses: actions-rs/toolchain@v1
+        uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: stable
-          target: ${{ matrix.job.target }}
-          override: true
-          profile: minimal
+          targets: ${{ matrix.job.target }}
 
       - name: Show version information (Rust, cargo, GCC)
         shell: bash
@@ -90,7 +87,7 @@ jobs:
           rustc --print=cfg
 
       - name: Download cross from GitHub releases
-        uses: giantswarm/install-binary-action@v1.0.0
+        uses: giantswarm/install-binary-action@v4
         if: ${{ matrix.job.use-cross }}
         with:
           binary: "cross"
@@ -155,17 +152,17 @@ jobs:
           LIB_FINAL_PATH="${NIF_DIRECTORY}/${LIB_FINAL_NAME}.tar.gz"
 
           # Let subsequent steps know where to find the lib
-          echo ::set-output name=LIB_FINAL_PATH::${LIB_FINAL_PATH}
-          echo ::set-output name=LIB_FINAL_NAME::${LIB_FINAL_NAME}.tar.gz
+          echo "LIB_FINAL_PATH=${LIB_FINAL_PATH}" >> "$GITHUB_OUTPUT"
+          echo "LIB_FINAL_NAME=${LIB_FINAL_NAME}.tar.gz" >> "$GITHUB_OUTPUT"
 
       - name: "Artifact upload"
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ steps.rename.outputs.LIB_FINAL_NAME }}
           path: ${{ steps.rename.outputs.LIB_FINAL_PATH }}
 
       - name: Publish archives and packages
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           files: |
             ${{ steps.rename.outputs.LIB_FINAL_PATH }}
